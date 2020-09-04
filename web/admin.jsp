@@ -20,41 +20,55 @@
 </head>
 <body>
     <div class="allCars">
-        <table>
-            <p><a href="#">添加</a></p>
-            <tr class="title">
-                <th>编号</th>
-                <th>名称</th>
-                <th>备注</th>
-                <th>品牌</th>
-                <th>价格</th>
-                <th>状态</th>
-                <th>操作</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>朗逸</td>
-                <td>自动1.6L</td>
-                <td>大众2</td>
-                <td>舒适型</td>
-                <td>72.0/天</td>
-                <td><a href="#">修改</a></td>
-            </tr>
-            <%
-                Car[] cars = (Car[])request.getAttribute("cars");
-                for (Car car : cars
-                ) {
-                    out.println("<tr>");
-                    out.println("<td>"+ car.getId() + "</td>");
-                    out.println("<td>"+ car.getCarName() + "</td>");
-                    out.println("<td>"+ car.getRemarks() + "</td>");
-                    out.println("<td>"+ car.getBrand() + "</td>");
-                    out.println("<td>"+ car.getPrice() + "</td>");
-                    out.println("<td><a>还车</a></td>");
-                    out.println("<tr>");
-                }
-            %>
-        </table>
+        <form action="JEEServlet" method="post">
+            <input type="hidden" name="operation" value="addCar">
+            <p>
+                <button type="submit" name="addCar"
+                        value="addCar">添加</button>
+            </p>
+        </form>
     </div>
+    <div>
+        <form action="JEEServlet" method="post">
+            <input type="hidden" name="operation" value="modifyCar">
+            <table>
+                <tr class="title">
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>备注</th>
+                    <th>品牌</th>
+                    <th>价格</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>朗逸</td>
+                    <td>自动1.6L</td>
+                    <td>大众2</td>
+                    <td>舒适型</td>
+                    <td>72.0/天</td>
+                    <td><a href="#">修改</a></td>
+                </tr>
+                <%
+                    Car[] cars = (Car[])request.getAttribute("cars");
+                    for (Car car : cars
+                    ) {
+                        out.println("<tr>");
+                        out.println("<td>"+ car.getId() + "</td>");
+                        out.println("<td>"+ car.getCarName() + "</td>");
+                        out.println("<td>"+ car.getRemarks() + "</td>");
+                        out.println("<td>"+ car.getBrand() + "</td>");
+                        out.println("<td>"+ car.getPrice() + "</td>");
+                        out.println("<td>" +
+                                "<button>还车</button></td>");
+                        out.println("<tr>");
+                    }
+                %>
+            </table>
+        </form>
+    </div>
+
+
 </body>
 </html>

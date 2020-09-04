@@ -11,10 +11,10 @@
     <title>登录</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="JEEServlet" method="post">
     <p>用户名：<input type="text" name="userName"></p>
     <p>密码：<input type="password" name="password"></p>
-    <button type="submit" name="register">登录</button>
+    <button type="submit" name="login">登录</button>
     <p><a href="register.jsp">创建账户</a></p>
 </form>
 </body>

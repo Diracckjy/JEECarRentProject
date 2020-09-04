@@ -11,7 +11,7 @@
     <title>注册</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="JEEServlet" method="post">
         <p>用户名：<input type="text" name="userName"></p>
         <p>密码：<input type="password" name="password"></p>
         <p>确认密码：<input type="password" name="confirmPaw"></p>

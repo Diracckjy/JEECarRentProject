@@ -5,6 +5,15 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>main.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>JEEServlet</servlet-name>
+        <servlet-class>com.carent.servlet.JEEServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JEEServlet</servlet-name>
+        <url-pattern>/JEEServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
