@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.io.IOException;
 
 public class JEEServlet extends HttpServlet {
@@ -17,13 +18,9 @@ public class JEEServlet extends HttpServlet {
         String opa=req.getParameter("operation");
         PrintWriter pw=resp.getWriter();
         if("login".equals(opa)){
-            int flag=userLogin(req,resp,name,psw);
-            if(flag==1){
+            userLogin(req,resp,name,psw);
                 req.getRequestDispatcher("/rentCar.jsp").forward(req,resp);//向浏览器要一个页面
-            }
-            else{
-                pw.print("登录失败，请重新登录");
-            }
+
         }
         else if("register".equals(opa)){
             int a=userRegister(req,resp,name,psw);
@@ -40,15 +37,19 @@ public class JEEServlet extends HttpServlet {
     }
 
     // 登录成功后重定向页面到主页
-    public int userLogin(HttpServletRequest req, HttpServletResponse resp,
-                         String userName, String password){
+    public void userLogin(HttpServletRequest req, HttpServletResponse resp,
+                         String userName, String password)throws IOException,ServletException
+    {
         int userId = -1;
-
+        PrintWriter pw=resp.getWriter();
         JEEService jes = new JEEService();
 
         userId = jes.LoginService(userName, password);
+        if (userId==1){
+            req.getRequestDispatcher("/rentCar.jsp").forward(req,resp);
+        }
+        else:
 
-        return userId;
     }
 
     // 注册成功后重定向到登录页
@@ -60,6 +61,5 @@ public class JEEServlet extends HttpServlet {
 
     }
 
-        return registerOK;
+
     }
-}
