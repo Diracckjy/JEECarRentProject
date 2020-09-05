@@ -2,15 +2,11 @@ package com.carent.servlet;
 
 import com.carent.service.JEEService;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-
 
 public class JEEServlet extends HttpServlet {
     @Override
@@ -56,13 +52,13 @@ public class JEEServlet extends HttpServlet {
     }
 
     // 注册成功后重定向到登录页
-    public int userRegister(HttpServletRequest req, HttpServletResponse resp,
+    public void userRegister(HttpServletRequest req, HttpServletResponse resp,
                             String userName, String password){
         int registerOK = 1;
 
         JEEService jes = new JEEService();
 
-        registerOK = jes.RegisterService(userName, password);
+    }
 
         return registerOK;
     }

@@ -33,6 +33,10 @@
         </p>
     </form>
     <form action="JEEServlet" method="post">
+        <!-- 提交表单时传值 -->
+        <input type="hidden" name="operation" value="rentCarPage">
+        <%-- 确定用户登录id --%>
+        <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
         <table>
             <tr class="title">
                 <th>编号</th>
