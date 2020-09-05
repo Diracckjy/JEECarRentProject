@@ -28,18 +28,18 @@
             <td>4</td>
             <td><a href="#">查看车辆</a> </td>
         </tr>
-        <%
-            WebUser[]  users = (WebUser[])request.getAttribute("users");
-            for (WebUser user : users
-            ) {
-                out.println("<tr>");
-                out.println("<td>"+user.getId()+"</td>");
-                out.println("<td>"+user.getUserName()+"</td>");
-                out.println("<td>"+user.getRentedCarNum()+"</td>");
-                out.println("<td><a href=\"#\">查看租借车辆</a></td>");
-                out.println("<tr>");
-            }
-        %>
+<%--        <%--%>
+<%--            WebUser[]  users = (WebUser[])request.getAttribute("users");--%>
+<%--            for (WebUser user : users--%>
+<%--            ) {--%>
+<%--                out.println("<tr>");--%>
+<%--                out.println("<td>"+user.getId()+"</td>");--%>
+<%--                out.println("<td>"+user.getUserName()+"</td>");--%>
+<%--                out.println("<td>"+user.getRentedCarNum()+"</td>");--%>
+<%--                out.println("<td><a href=\"#\">查看租借车辆</a></td>");--%>
+<%--                out.println("<tr>");--%>
+<%--            }--%>
+<%--        %>--%>
     </table>
 </div>
 </body>
