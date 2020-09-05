@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class JEEServlet extends HttpServlet {
     @Override
@@ -38,7 +39,6 @@ public class JEEServlet extends HttpServlet {
 
         }
     }
-
     // 登录成功后重定向页面到主页
     public int userLogin(HttpServletRequest req, HttpServletResponse resp,
                          String userName, String password){
@@ -46,19 +46,16 @@ public class JEEServlet extends HttpServlet {
 
         JEEService jes = new JEEService();
 
-        userId = jes.LoginService(userName, password);
 
         return userId;
     }
 
     // 注册成功后重定向到登录页
-    public void userRegister(HttpServletRequest req, HttpServletResponse resp,
+    public int userRegister(HttpServletRequest req, HttpServletResponse resp,
                             String userName, String password){
         int registerOK = 1;
 
         JEEService jes = new JEEService();
-
-    }
 
         return registerOK;
     }
