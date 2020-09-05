@@ -21,7 +21,7 @@ public class JEEServlet extends HttpServlet {
         PrintWriter pw=resp.getWriter();
         if("login".equals(opa)){
             userLogin(req,resp,name,psw);
-                req.getRequestDispatcher("/rentCar.jsp").forward(req,resp);//向浏览器要一个页面
+//                req.getRequestDispatcher("/rentCar.jsp").forward(req,resp);//向浏览器要一个页面
 
         }
         else if("register".equals(opa)){
@@ -45,25 +45,24 @@ public class JEEServlet extends HttpServlet {
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
         else{
-            req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
+            req.getRequestDispatcher("/renturnCar.jsp").forward(req,resp);
         }
 
     }
 
     // 注册成功后重定向到登录页
-    public int userRegister(HttpServletRequest req, HttpServletResponse resp,
+    public void userRegister(HttpServletRequest req, HttpServletResponse resp,
                             String userName, String password)
             throws IOException,ServletException
     {
-        int registerOK = 0;
-        PrintWriter pw=resp.getWriter();
         JEEService jes = new JEEService();
-        registerOK= jes.registerService(userName,password);
-        if(registerOK==1){
+//        jes.registerService(userName,password);
+        if(userName==null||password==null){
+            req.setAttribute("error","RegisterFailed");
+        }
+        else{
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
-
-        return registerOK;
     }
 
 
