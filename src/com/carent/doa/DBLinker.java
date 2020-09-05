@@ -11,10 +11,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBLinker {
+    // 在登陆时查找给定用户是否存在
     public void findUserInfo(String userName, String password) {
 
     }
 
+    // 在注册时存储用户信息
     public void storeUserInfo(String userName, String password) {
 
     }
