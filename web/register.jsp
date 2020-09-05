@@ -11,6 +11,12 @@
     <title>注册</title>
 </head>
 <body>
+    <%
+        String error = (String)request.getAttribute("error");
+        if(error != null){
+            out.println("<h3>"+error+"</h3>");
+        }
+    %>
     <form action="JEEServlet" method="post">
         <input type="hidden" name="operation" value="register">
         <p>用户名：<input type="text" name="userName"></p>

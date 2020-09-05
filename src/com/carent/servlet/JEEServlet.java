@@ -57,8 +57,9 @@ public class JEEServlet extends HttpServlet {
     {
         JEEService jes = new JEEService();
 //        jes.registerService(userName,password);
-        if(userName==null||password==null){
+        if(userName==""||password==""){
             req.setAttribute("error","RegisterFailed");
+            req.getRequestDispatcher("register.jsp").forward(req, resp);
         }
         else{
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
