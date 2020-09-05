@@ -24,6 +24,7 @@
         <h2>已租车辆</h2>
 <%--        跳转到租车页--%>
         <form action="JEEServlet" method="post">
+            <input type="hidden" name="operation" value="gotoRentCar">
             <p>
                 <button type="submit"
                         name="gotoRentCar" value="gotoRentCar">

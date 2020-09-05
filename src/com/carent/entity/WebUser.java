@@ -1,7 +1,7 @@
 package com.carent.entity;
 
 public class WebUser {
-    private String id;
+    private int id;
     private String userName;
     private String password;
     private int rentedCarNum;
@@ -30,11 +30,22 @@ public class WebUser {
         this.userName = userName;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+    public WebUser()
+    {
+
+    }
+
+    public WebUser(int id, String userName, String password, int rentedCarNum) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.rentedCarNum = rentedCarNum;
     }
 }
