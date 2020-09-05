@@ -52,10 +52,16 @@ public class JEEServlet extends HttpServlet {
 
     // 注册成功后重定向到登录页
     public int userRegister(HttpServletRequest req, HttpServletResponse resp,
-                            String userName, String password){
-        int registerOK = 1;
-
+                            String userName, String password)
+            throws IOException,ServletException
+    {
+        int registerOK = 0;
+        PrintWriter pw=resp.getWriter();
         JEEService jes = new JEEService();
+        registerOK= jes.registerService(userName,password);
+        if(registerOK==1){
+            req.getRequestDispatcher("/login.jsp").forward(req,resp);
+        }
 
         return registerOK;
     }
