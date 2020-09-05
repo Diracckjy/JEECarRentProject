@@ -7,13 +7,17 @@ import com.carent.entity.*;
 // 业务处理类
 public class JEEService {
     // 在数据库中查询用户数据是否存在, 不存在时返回-1
-    public void loginService(String userName, String password){
+    public WebUser loginService(String userName, String password){
+        WebUser webUser = new WebUser();
 
+        return webUser;
     }
 
     // 将用户名、密码存入数据库
-    public void registerService(String userName, String password){
+    public WebUser registerService(String userName, String password){
+        WebUser webUser = new WebUser();
 
+        return webUser;
     }
 
     //  打开租车页面功能，返回可租汽车数组
