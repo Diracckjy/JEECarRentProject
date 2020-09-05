@@ -15,14 +15,15 @@ import java.util.Properties;
 
 public class DBLinker  implements UserDao {
     // 在登陆时查找给定用户是否存在
+    Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultSet = null;
     public WebUser findUserInfo(String userName, String password) {
         //声明对象
         WebUser webUser = null;
         //jdbc
         //声明连接
-        Connection connection = null;
-        PreparedStatement ps = null;
-        ResultSet resultSet = null;
+
         try {
             //创建连接
           //  connection = BjsxtJdbc.getConnection();
@@ -39,7 +40,7 @@ public class DBLinker  implements UserDao {
             Class.forName(driverClass);
             connection=DriverManager.getConnection(url,user,password1);
 
-            String sql = "select * from t_WebUser where name = ? and pwd = ? ";
+            String sql = "select * from t_WebUser where userName = ? and password = ? ";
        //     ps = BjsxtJdbc.getPreparedStatement(connection, sql);
             ps=connection.prepareStatement(sql);
             ps.setString(1, userName);
@@ -63,7 +64,7 @@ public class DBLinker  implements UserDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
-            BjsxtJdbc.closeAll(resultSet, ps, connection);
+//            BjsxtJdbc.closeAll(resultSet, ps, connection);
         }
 
 
@@ -71,15 +72,30 @@ public class DBLinker  implements UserDao {
     }
 
     // 在注册时存储用户信息
-    public void storeUserInfo(String userName, String password) {
+    public void storeUserInfo(String userName, String password) throws IOException, ClassNotFoundException, SQLException {
             //sql
-//            String sql = "insert into t_student(id,userName,password,rentedCarNum) values( ?,?,?,?) ";
-//        WebUser w=new WebUser();
-//        w.setUserName(userName);
-//        w.setPassword(password);
-//            //数组
-//            Object[] objs = {w.getId(),w.getUserName(),w.getPassword(),w.getRentedCarNum()};
-//            return BjsxtJdbc.excuteDML(sql, objs);
+
+
+        InputStream is=DBLinker.class.getClassLoader().getResourceAsStream("jdbc.properties");
+        Properties pros=new Properties();
+        pros.load(is);
+        String user = pros.getProperty("user");
+        String password1 = pros.getProperty("password");
+        String url = pros.getProperty("url");
+        String driverClass = pros.getProperty("driverClass");
+        Class.forName(driverClass);
+        connection=DriverManager.getConnection(url,user,password1);
+        String sql = "insert into t_WebUser(userName,password,rentedCarNum) values( ?,?,?) ";
+       // String sql = "select * from t_WebUser where userName = ? and password = ? ";
+        //     ps = BjsxtJdbc.getPreparedStatement(connection, sql);
+        ps=connection.prepareStatement(sql);
+        ps.setString(1, userName);
+        ps.setString(2, password);
+        ps.setInt(3, 0);
+
+            //数组
+           // Object[] objs = {w.getId(),w.getUserName(),w.getPassword(),w.getRentedCarNum()};
+            //return BjsxtJdbc.excuteDML(sql, objs);
 
     }
 

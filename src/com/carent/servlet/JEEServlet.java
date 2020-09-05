@@ -38,14 +38,14 @@ public class JEEServlet extends HttpServlet {
             throws IOException,ServletException
     {
 
-        PrintWriter pw=resp.getWriter();
+        // PrintWriter pw=resp.getWriter();
         JEEService jes = new JEEService();
         WebUser userId= jes.loginService(userName,password);
         if (userId==null){
-            req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }
         else{
-            req.getRequestDispatcher("/renturnCar.jsp").forward(req,resp);
+            req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
         }
 
     }

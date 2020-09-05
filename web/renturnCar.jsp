@@ -57,22 +57,22 @@
                 <input type="hidden" name="operation" value="returnCar">
                 <%-- 确定用户登录id --%>
                 <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
-                <%
-                    Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");
-                    for (Car car : rentedCars
-                    ) {
-                        out.println("<tr>");
-                        out.println("<td>" + car.getId() + "</td>");
-                        out.println("<td>" + car.getCarName() + "</td>");
-                        out.println("<td>" + car.getRemarks() + "</td>");
-                        out.println("<td>" + car.getBrand() + "</td>");
-                        out.println("<td>" + car.getPrice() + "</td>");
-                        // 通过车辆id获取信息
-                        out.println("<td><button type=\"submit\" name=\"return\" value="
-                                + car.getId() + ">还车</button></td>");
-                        out.println("<tr>");
-                    }
-                %>
+<%--                <%--%>
+<%--                    Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");--%>
+<%--                    for (Car car : rentedCars--%>
+<%--                    ) {--%>
+<%--                        out.println("<tr>");--%>
+<%--                        out.println("<td>" + car.getId() + "</td>");--%>
+<%--                        out.println("<td>" + car.getCarName() + "</td>");--%>
+<%--                        out.println("<td>" + car.getRemarks() + "</td>");--%>
+<%--                        out.println("<td>" + car.getBrand() + "</td>");--%>
+<%--                        out.println("<td>" + car.getPrice() + "</td>");--%>
+<%--                        // 通过车辆id获取信息--%>
+<%--                        out.println("<td><button type=\"submit\" name=\"return\" value="--%>
+<%--                                + car.getId() + ">还车</button></td>");--%>
+<%--                        out.println("<tr>");--%>
+<%--                    }--%>
+<%--                %>--%>
             </table>
         </form>
     </div>
