@@ -15,26 +15,16 @@ public class JEEServlet extends HttpServlet {
     }
 
     // 登录成功后重定向页面到主页
-    public int userLogin(HttpServletRequest req, HttpServletResponse resp,
+    public void userLogin(HttpServletRequest req, HttpServletResponse resp,
                          String userName, String password){
-        int userId = -1;
 
-        JEEService jes = new JEEService();
-
-        userId = jes.LoginService(userName, password);
-
-        return userId;
     }
 
     // 注册成功后重定向到登录页
-    public int userRegister(HttpServletRequest req, HttpServletResponse resp,
+    public void userRegister(HttpServletRequest req, HttpServletResponse resp,
                             String userName, String password){
-        int registerOK = 1;
 
-        JEEService jes = new JEEService();
-
-        registerOK = jes.RegisterService(userName, password);
-
-        return registerOK;
     }
+
+    //
 }

@@ -26,6 +26,7 @@
     <h2>可租车辆</h2>
     <%--        跳转到还车页--%>
     <form action="JEEServlet" method="post">
+        <input type="hidden" name="operation" value="gotoReturnCar">
         <p>
             <button type="submit"
                     name="gotoReturnCar" value="gotoReturnCar">
@@ -33,6 +34,10 @@
         </p>
     </form>
     <form action="JEEServlet" method="post">
+        <!-- 提交表单时传值 -->
+        <input type="hidden" name="operation" value="rentCarPage">
+        <%-- 确定用户登录id --%>
+        <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
         <table>
             <tr class="title">
                 <th>编号</th>
@@ -53,10 +58,6 @@
                 <td><a href="#">租车</a></td>
             </tr>
 
-            <!-- 提交表单时传值 -->
-            <input type="hidden" name="operation" value="rentCar">
-            <%-- 确定用户登录id --%>
-            <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
             <%
                 Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
                 for (Car car : rentableCars

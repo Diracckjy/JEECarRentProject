@@ -12,6 +12,7 @@
 </head>
 <body>
 <form action="JEEServlet" method="post">
+    <input type="hidden" name="operation" value="login">
     <p>用户名：<input type="text" name="userName"></p>
     <p>密码：<input type="password" name="password"></p>
     <button type="submit" name="login">登录</button>
