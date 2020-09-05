@@ -9,18 +9,9 @@
 <html>
 <head>
     <title>登录</title>
-<%--    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>--%>
-<%--    <script type="text/javascript">--%>
-<%--        console.log("哈哈哈")--%>
-<%--        $(function () {--%>
-<%--            $(".btn").click--%>
-<%--            {--%>
-<%--                console.log("哈哈");--%>
-<%--            }--%>
-<%--        })--%>
-<%--    </script>--%>
 </head>
 <body>
+<p></p>
 <form action="JEEServlet" method="post">
     <input type="hidden" name="operation" value="login">
     <p>用户名：<input type="text" name="userName"></p>
