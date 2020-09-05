@@ -10,9 +10,10 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
-public class DBLinker {
+public class DBLinker  implements UserDao {
     // 在登陆时查找给定用户是否存在
     public WebUser findUserInfo(String userName, String password) {
         //声明对象
@@ -115,6 +116,46 @@ public class DBLinker {
     // 返回管理员所查看用户租用的所有车辆
     public void getUserRentedCar() {
 
+    }
+
+    @Override
+    public WebUser userloginDao(String name, String pwd) {
+        return null;
+    }
+
+    @Override
+    public int deleteWebUserDao(String WebUserid) {
+        return 0;
+    }
+
+    @Override
+    public int deleteWebUsersDao(String WebUserids) {
+        return 0;
+    }
+
+    @Override
+    public int addWebUserDao(WebUser WebUser) {
+        return 0;
+    }
+
+    @Override
+    public WebUser searchWebUserDao(String WebUserid) {
+        return null;
+    }
+
+    @Override
+    public int updateWebUserDao(WebUser WebUser) {
+        return 0;
+    }
+
+    @Override
+    public List<WebUser> WebUserListDaoLike(String name, String calzz) {
+        return null;
+    }
+
+    @Override
+    public int selectCountDao() {
+        return 0;
     }
 //
 //    public class WebUserDaoImpl implements UserDao {
