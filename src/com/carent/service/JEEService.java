@@ -1,4 +1,6 @@
 package com.carent.service;
+import com.carent.dao.DBLinker;
+import com.carent.entity.WebUser;
 
 import com.carent.entity.WebUser;
 
@@ -6,9 +8,7 @@ import com.carent.entity.WebUser;
 public class JEEService {
     // 在数据库中查询用户数据是否存在, 不存在时返回-1
     public WebUser loginService(String userName, String password){
-        WebUser webUser = new WebUser();
-
-        return webUser;
+        return new DBLinker().findUserInfo(userName, password);
     }
 
     // 将用户名、密码存入数据库
