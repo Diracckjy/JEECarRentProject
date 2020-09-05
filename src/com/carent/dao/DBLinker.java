@@ -71,6 +71,14 @@ public class DBLinker {
 
     // 在注册时存储用户信息
     public void storeUserInfo(String userName, String password) {
+            //sql
+//            String sql = "insert into t_student(id,userName,password,rentedCarNum) values( ?,?,?,?) ";
+//        WebUser w=new WebUser();
+//        w.setUserName(userName);
+//        w.setPassword(password);
+//            //数组
+//            Object[] objs = {w.getId(),w.getUserName(),w.getPassword(),w.getRentedCarNum()};
+//            return BjsxtJdbc.excuteDML(sql, objs);
 
     }
 

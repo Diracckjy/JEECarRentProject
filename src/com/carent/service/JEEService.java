@@ -2,6 +2,8 @@ package com.carent.service;
 import com.carent.dao.DBLinker;
 import com.carent.entity.WebUser;
 
+import com.carent.entity.WebUser;
+
 // 业务处理类
 public class JEEService {
     // 在数据库中查询用户数据是否存在, 不存在时返回-1
