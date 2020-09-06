@@ -20,16 +20,20 @@
 <head>
     <title>租车页面</title>
 </head>
+
 <body>
-
-<div class="rentedCarTable">
-
+<div">
+    <p><a href="login.jsp">退出登录</a></p>
+    <h2>可租车辆</h2>
     <form action="JEEServlet" method="post">
         <%-- 跳转到还车页--%>
+        <input type="hidden" name="uerId"
+               value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
                     name="operation" value="gotoReturnCar">
-                去还车</button>
+                去还车
+            </button>
         </p>
     </form>
 
@@ -43,8 +47,9 @@
             <tr class="title">
                 <th>编号</th>
                 <th>名称</th>
-                <th>备注</th>
+                <th>车牌</th>
                 <th>品牌</th>
+                <th>型号</th>
                 <th>价格</th>
                 <th>操作</th>
             </tr>
@@ -65,8 +70,9 @@
                     out.println("<tr>");
                     out.println("<td>" + car.getId() + "</td>");
                     out.println("<td>" + car.getCarName() + "</td>");
-                    out.println("<td>" + car.getRemarks() + "</td>");
+                    out.println("<td>" + car.getCarNo() + "</td>");
                     out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getType() + "</td>");
                     out.println("<td>" + car.getPrice() + "</td>");
                     // 通过车辆id获取信息
                     out.println("<td><button type=\"submit\" name=\"carId\" value="
