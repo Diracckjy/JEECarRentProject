@@ -169,9 +169,24 @@
 
             <!-- 提交表单时传值 -->
             <input type="hidden" name="operation" value="returnCar">
-
-            <input type="hidden" name="uerId" value="">
-
+            <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
+            <%
+                Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");
+                for (Car car : rentedCars
+                ) {
+                    out.println("<tr>");
+                    out.println("<td>" + car.getId() + "</td>");
+                    out.println("<td>" + car.getCarName() + "</td>");
+                    out.println("<td>" + car.getCarNo() + "</td>");
+                    out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getType() + "</td>");
+                    out.println("<td>" + car.getPrice() + "</td>");
+                    // 通过车辆id获取信息
+                    out.println("<td><button type=\"submit\" name=\"carId\" value="
+                            + car.getId() + ">还车</button></td>");
+                    out.println("<tr>");
+                }
+            %>
         </table>
     </form>
 </div>

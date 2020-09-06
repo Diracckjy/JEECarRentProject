@@ -62,23 +62,23 @@
                 <td>72.0/天</td>
                 <td><a href="#">租车</a></td>
             </tr>
-<%--            <%--%>
-<%--                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");--%>
-<%--                for (Car car : rentableCars--%>
-<%--                ) {--%>
-<%--                    out.println("<tr>");--%>
-<%--                    out.println("<td>" + car.getId() + "</td>");--%>
-<%--                    out.println("<td>" + car.getCarName() + "</td>");--%>
-<%--                    out.println("<td>" + car.getCarNo() + "</td>");--%>
-<%--                    out.println("<td>" + car.getBrand() + "</td>");--%>
-<%--                    out.println("<td>" + car.getType() + "</td>");--%>
-<%--                    out.println("<td>" + car.getPrice() + "</td>");--%>
-<%--                    // 通过车辆id获取信息--%>
-<%--                    out.println("<td><button type=\"submit\" name=\"carId\" value="--%>
-<%--                            + car.getId() + ">租车</button></td>");--%>
-<%--                    out.println("<tr>");--%>
-<%--                }--%>
-<%--            %>--%>
+            <%
+                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
+                for (Car car : rentableCars
+                ) {
+                    out.println("<tr>");
+                    out.println("<td>" + car.getId() + "</td>");
+                    out.println("<td>" + car.getCarName() + "</td>");
+                    out.println("<td>" + car.getCarNo() + "</td>");
+                    out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getType() + "</td>");
+                    out.println("<td>" + car.getPrice() + "</td>");
+                    // 通过车辆id获取信息
+                    out.println("<td><button type=\"submit\" name=\"carId\" value="
+                            + car.getId() + ">租车</button></td>");
+                    out.println("<tr>");
+                }
+            %>
             <tr>
                 <td>2</td>
                 <td>丰田</td>
