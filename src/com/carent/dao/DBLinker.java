@@ -390,6 +390,73 @@ public class DBLinker {
         return (Car[])cars.toArray(new Car[cars.size()]);
     }
 
+       //增加车
+    public  void addCar(Car car)
+    {
+
+        try {
+            Connection connection = getConnection();
+            String sql = "insert into t_car(id,brand,carName,carNo,type,price,rentedBy) values( ?,?,?,?,?,?,?) ";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, Integer.toString(car.getId()));
+            ps.setString(2, car.getBrand());
+            ps.setString(3, car.getCarName());
+            ps.setString(4, car.getCarNo());
+            ps.setString(5, car.getType());
+            ps.setBigDecimal(6, car.getPrice());
+            ps.setInt(7, car.getRentedBy());
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
+
+
+  //删除车
+    public  void deleteCar(Car car)
+    {
+        try {
+            Connection connection = getConnection();
+            String sql = "delete from t_car where id = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, car.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+
+    //修改车
+
+    public void alterCar(Car car)
+    {
+
+        try {
+            Connection connection = getConnection();
+            String sql = "update t_car  set brand=?,carName=?,carNo=?,type=?,price=?,rentedBy=?  where id= ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, car.getBrand());
+            ps.setString(2,car.getCarName());
+            ps.setString(3,car.getCarNo());
+            ps.setString(4,car.getType());
+            ps.setBigDecimal(5,car.getPrice());
+            ps.setInt(6, car.getRentedBy());
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+
+
     // 返回所有用户信息
     public WebUser [] getAllUser() {
         //声明对象
@@ -429,9 +496,8 @@ public class DBLinker {
         return (WebUser [])webuser.toArray(new WebUser[webuser.size()]);
     }
 
-    // 返回管理员所查看用户租用的所有车辆
-    public void getUserRentedCar() {
-
-    }
+//    // 返回管理员所查看用户租用的所有车辆
+//    public void getUserRentedCar() {
+//    }
 
 }
