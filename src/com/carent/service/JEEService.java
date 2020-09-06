@@ -8,8 +8,16 @@ import com.*;
 // 业务处理类
 public class JEEService {
     // 在数据库中查询用户数据是否存在, 不存在时返回-1
-    public WebUser loginService(String userName, String password){
+    public WebUser findUserService(String userName, String password){
         return new DBLinker().findUserInfo(userName, password);
+    }
+
+    public WebUser findUserService(String userName){
+        return new DBLinker().findUserInfo(userName);
+    }
+
+    public WebUser findUserService(int userId){
+        return new DBLinker().findUserInfo(userId);
     }
 
     // 将用户名、密码存入数据库
@@ -51,4 +59,5 @@ public class JEEService {
     public void adminViewUserRentsService(){
 
     }
+
 }

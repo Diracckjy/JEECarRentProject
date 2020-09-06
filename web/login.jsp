@@ -20,9 +20,10 @@
 <form action="JEEServlet" method="post">
     <input type="hidden" name="operation" value="login">
     <p>用户名：<input type="text" name="userName"></p>
-    <p>密码：<input type="password" name="password"></p>
+    <p>密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"></p>
     <button class="btn" type="submit" name="register">登录</button>
     <p><a href="register.jsp">创建账户</a></p>
-</form>
+    </form>
+</div>>
 </body>
 </html>

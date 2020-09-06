@@ -135,7 +135,71 @@ public class DBLinker {
 
     }
 
-    // 根据当前用户信息修改被租车辆信息     去租车
+    public WebUser findUserInfo(String userName) {
+        //声明对象
+        WebUser webUser = null;
+        //jdbc
+        //声明连接
+
+        try {
+            Connection conn = getConnection();
+
+            String sql = "select * from t_WebUser where userName = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            //发送sql获取结果集
+            ResultSet resultSet = ps.executeQuery();
+            //处理结果
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String uname = resultSet.getString("userName");
+                String upwd = resultSet.getString("password");
+                int rentedCarNum = resultSet.getInt("rentedCarNum");
+
+                //创建对象
+                webUser = new WebUser(id, uname, upwd, rentedCarNum);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return webUser;
+    }
+
+    public WebUser findUserInfo(int userId) {
+        //声明对象
+        WebUser webUser = null;
+        //jdbc
+        //声明连接
+
+        try {
+            Connection conn = getConnection();
+
+            String sql = "select * from t_WebUser where id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(userId));
+            //发送sql获取结果集
+            ResultSet resultSet = ps.executeQuery();
+            //处理结果
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String uname = resultSet.getString("userName");
+                String upwd = resultSet.getString("password");
+                int rentedCarNum = resultSet.getInt("rentedCarNum");
+
+                //创建对象
+                webUser = new WebUser(id, uname, upwd, rentedCarNum);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return webUser;
+    }
+
+    // 根据当前用户信息修改被租车辆信息
     public void changeRentedCarInfo(int userId, int carId) {
         //声明对象
         //jdbc
@@ -195,7 +259,7 @@ public class DBLinker {
     }
 
     // 返回当前用户租用的所有车辆
-    public Car[] getRentedCar(int userId)      {
+    public Car[] getRentedCar(int userId) {
 
         //声明对象
 

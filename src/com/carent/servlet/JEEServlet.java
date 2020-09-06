@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import com.carent.entity.WebUser;
 
 public class JEEServlet extends HttpServlet {
     @Override
@@ -39,7 +39,7 @@ public class JEEServlet extends HttpServlet {
         String name = req.getParameter("userName");
         String psw = req.getParameter("password");
         JEEService jes = new JEEService();
-        WebUser webUser = jes.loginService(name, psw);
+        WebUser webUser = jes.findUserService(name, psw);
 
         if (name == "admin" && psw == "admin") {
             adminLogin(req, resp);
@@ -50,6 +50,7 @@ public class JEEServlet extends HttpServlet {
             } else {
                 int userId = webUser.getId();
                 gotoReturnCar(req, resp, userId);
+
             }
         }
     }
@@ -59,15 +60,20 @@ public class JEEServlet extends HttpServlet {
             throws IOException, ServletException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-
         JEEService jes = new JEEService();
-        jes.registerService(userName,password);
 
-        if (userName == null || password == null) {
+        if(userName == null || password == null){
             req.setAttribute("errorMsg", "注册失败，密码或用户名不能为空。");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            WebUser webUser = jes.findUserService(userName);
+            if(webUser != null){
+                req.setAttribute("errorMsg", "注册失败, 用户名重复。");
+                req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            }else {
+                jes.registerService(userName,password);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            }
         }
     }
 
@@ -95,6 +101,8 @@ public class JEEServlet extends HttpServlet {
     public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
         Car[] listCar= new JEEService().carReturnPageService(userId);
+        WebUser webuser = new JEEService().findUserService(userId);
+        req.setAttribute("currentName", webuser.getUserName());
         req.setAttribute("rentedCars",listCar);
         req.setAttribute("userId", userId);
         req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
@@ -103,6 +111,8 @@ public class JEEServlet extends HttpServlet {
     public void gotoRentCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
         Car[] carlist = new JEEService().carRentPageService();
+        WebUser webuser = new JEEService().findUserService(userId);
+        req.setAttribute("currentName", webuser.getUserName());
         req.setAttribute("rentableCars", carlist);
         req.setAttribute("userId", userId);
         req.getRequestDispatcher("/rentCar.jsp").forward(req, resp);
