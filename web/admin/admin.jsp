@@ -9,7 +9,7 @@
 <%--
   admin.jsp:管理员修改车辆页面
   功能：修改车辆信息, 添加车辆
-  用户登录后由LoginServlet重定向至此
+  用户登录后由LoginServlet定向至此
   需要rentableCars属性显示可租车辆
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -30,12 +30,13 @@
                 <tr class="title">
                     <th>编号</th>
                     <th>名称</th>
-                    <th>备注</th>
+                    <th>车牌</th>
                     <th>品牌</th>
+                    <th>型号</th>
                     <th>价格</th>
-                    <th>状态</th>
                     <th>操作</th>
                 </tr>
+                <%-- 测试显示 --%>
                 <tr>
                     <td>1</td>
                     <td>朗逸</td>
@@ -43,22 +44,22 @@
                     <td>大众2</td>
                     <td>舒适型</td>
                     <td>72.0/天</td>
-                    <td><a href="#">修改</a></td>
+                    <td><a href="#">租车</a></td>
                 </tr>
                 <%
-                    Car[] cars = (Car[])request.getAttribute("cars");
+                    Car[] cars = (Car[]) request.getAttribute("cars");
                     for (Car car : cars
                     ) {
                         out.println("<tr>");
-                        out.println("<td>"+ car.getId() + "</td>");
-                        out.println("<td>"+ car.getCarName() + "</td>");
-                        out.println("<td>"+ car.getRemarks() + "</td>");
-                        out.println("<td>"+ car.getBrand() + "</td>");
-                        out.println("<td>"+ car.getPrice() + "</td>");
-                        out.println("<td>" +
-                                "<button type=\"submit\" name=\"modifyCar\" " +
-                                "value=\"" + car.getId() + "\">" +
-                                "修改车辆信息</button></td>");
+                        out.println("<td>" + car.getId() + "</td>");
+                        out.println("<td>" + car.getCarName() + "</td>");
+                        out.println("<td>" + car.getCarNo() + "</td>");
+                        out.println("<td>" + car.getBrand() + "</td>");
+                        out.println("<td>" + car.getType() + "</td>");
+                        out.println("<td>" + car.getPrice() + "</td>");
+                        // 通过车辆id获取信息
+                        out.println("<td><button type=\"submit\" name=\"carId\" value="
+                                + car.getId() + ">租车</button></td>");
                         out.println("<tr>");
                     }
                 %>
