@@ -85,7 +85,6 @@ public class JEEServlet extends HttpServlet {
         jes.carRentService(userId, carId);
 
         gotoRentCar(req, resp, userId);
-
     }
 
     public void returnCar(HttpServletRequest req, HttpServletResponse resp)

@@ -42,7 +42,7 @@ public class JEEService {
 
     // 还车功能，根据所还车辆信息修改数据库
     public void carReturnService(int userId, int carId){
-
+        new DBLinker().changeReturnedCarInfo(userId, carId);
     }
 
     // 管理员主页功能，返回所有车辆信息供管理员查看
