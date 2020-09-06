@@ -15,10 +15,7 @@ public class Car {
     private String type;
     //租金
     private BigDecimal price;
-    //状态
-    private String status;
-    //备注
-    private String remarks;
+
     // 租借用户编号
     private String rentedBy;
 
@@ -30,25 +27,17 @@ public class Car {
         this.rentedBy = rentedBy;
     }
 
-    public Car(int id, String brand, String carName, String carNo, String type, BigDecimal price, String status, String remarks, String rentedBy) {
+    public Car(int id, String brand, String carName, String carNo, String type, BigDecimal price, String rentedBy) {
         this.id = id;
         this.brand = brand;
         this.carName = carName;
         this.carNo = carNo;
         this.type = type;
         this.price = price;
-        this.status = status;
-        this.remarks = remarks;
+
         this.rentedBy = rentedBy;
     }
 
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
 
     public int getId() {
         return id;
@@ -66,13 +55,7 @@ public class Car {
         this.price = price;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getType() {
         return type;
