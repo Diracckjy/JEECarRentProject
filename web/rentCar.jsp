@@ -26,6 +26,8 @@
 
     <form action="JEEServlet" method="post">
         <%-- 跳转到还车页--%>
+            <input type="hidden" name="uerId"
+                   value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
                     name="operation" value="gotoReturnCar">

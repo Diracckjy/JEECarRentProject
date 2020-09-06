@@ -25,9 +25,11 @@ public class JEEServlet extends HttpServlet {
         } else if("returnCar".equals(opa)){
             returnCar(req, resp);
         }else if("gotoReturnCar".equals(opa)){
-            gotoReturnCar(req,resp);
+            int userId = (int)req.getAttribute("userId");
+            gotoReturnCar(req,resp, userId);
         }else if ("gotoRentCar".equals(opa)){
-            gotoRentCar(req, resp);
+            int userId = (int)req.getAttribute("userId");
+            gotoRentCar(req, resp, userId);
         }
     }
 
@@ -46,8 +48,8 @@ public class JEEServlet extends HttpServlet {
                 req.setAttribute("errorMsg", "登陆失败，用户名或密码错误。");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             } else {
-                req.setAttribute("userId", webUser.getId());
-                gotoReturnCar(req, resp);
+                int userId = webUser.getId();
+                gotoReturnCar(req, resp, userId);
             }
         }
     }
@@ -71,38 +73,38 @@ public class JEEServlet extends HttpServlet {
 
     public void rentCar(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
-        Integer userId = Integer.valueOf(req.getParameter("userID"));
-        Integer carId = Integer.valueOf(req.getParameter("ID"));
+        int userId = Integer.parseInt(req.getParameter("userID"));
+        int carId = Integer.parseInt(req.getParameter("ID"));
         JEEService jes = new JEEService();
         jes.carRentService(userId, carId);
 
-        gotoRentCar(req,resp);
+        gotoRentCar(req, resp, userId);
 
     }
 
     public void returnCar(HttpServletRequest req, HttpServletResponse resp)
         throws IOException, ServletException{
-        Integer userId = Integer.valueOf(req.getParameter("userID"));
-        Integer carId = Integer.valueOf(req.getParameter("ID"));
+        int userId = Integer.parseInt(req.getParameter("userID"));
+        int carId = Integer.parseInt(req.getParameter("ID"));
         JEEService jes = new JEEService();
         jes.carReturnService(userId,carId);
 
-        gotoReturnCar(req,resp);
-
+        gotoReturnCar(req, resp, userId);
     }
 
-    public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp)
+    public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
-        int userId = (int)req.getAttribute("userId");
         Car[] listCar= new JEEService().carReturnPageService(userId);
         req.setAttribute("rentedCars",listCar);
+        req.setAttribute("userId", userId);
         req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
     }
 
-    public void gotoRentCar(HttpServletRequest req, HttpServletResponse resp)
+    public void gotoRentCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
         Car[] carlist = new JEEService().carRentPageService();
         req.setAttribute("rentableCars", carlist);
+        req.setAttribute("userId", userId);
         req.getRequestDispatcher("/rentCar.jsp").forward(req, resp);
     }
 
