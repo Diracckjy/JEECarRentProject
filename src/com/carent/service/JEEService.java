@@ -28,8 +28,8 @@ public class JEEService {
     }
 
     // 打开还车页功能，返回当前用户已租车辆的数组
-    public Car[] carReturnPageService(){
-        return  new DBLinker().getRentedCar();
+    public Car[] carReturnPageService(int userId){
+        return  new DBLinker().getRentedCar(userId);
     }
 
     // 还车功能，根据所还车辆信息修改数据库

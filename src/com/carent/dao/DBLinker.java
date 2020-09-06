@@ -6,9 +6,11 @@ import com.carent.entity.Car;
 import com.carent.entity.WebUser;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 import com.carent.entity.WebUser;
 
@@ -22,10 +24,10 @@ public class DBLinker {
         String psw = "";
         Properties pros = new Properties();
         try {
-            pros.load(DBLinker.class.getClassLoader().getResourceAsStream("jdbc.propertoes"));
+            pros.load(DBLinker.class.getClassLoader().getResourceAsStream("jdbc.properties"));
             url = pros.getProperty("url");
             user = pros.getProperty("user");
-            psw = pros.getProperty("psw");
+            psw = pros.getProperty("password");
 
             Class.forName(pros.getProperty("driverClass"));
         } catch (ClassNotFoundException | IOException ex) {
@@ -88,6 +90,52 @@ public class DBLinker {
 
     // 从数据库查询并返回所有可租车辆
     public Car[] getRentableCars() {
+
+        //声明对象
+        WebUser webuser = null;
+        //jdbc
+        //声明连接
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        ArrayList<Car>  cars= new ArrayList<>();
+        try {
+            //创建连接
+            conn = getConnection();
+
+            String sql = "select * from t_car where rentedBy = ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(userId));
+
+            //发送sql获取结果集
+            resultSet = ps.executeQuery();
+            //处理结果
+
+            while(resultSet.next()){
+                int id = resultSet.getInt("id");
+                String brand = resultSet.getString("brand");
+
+                String carName = resultSet.getString("carName");
+
+                String carNo1 = resultSet.getString("carNo");
+                String type1 = resultSet.getString("type");
+                BigDecimal price = resultSet.getBigDecimal("price");
+                String status1 = resultSet.getString("status");
+                String remarks = resultSet.getString("remarks");
+                String rentedBy = resultSet.getString("rentedBy");
+                //创建对象
+                Car c=new Car(id,brand,carName,carNo1,type1,price,status1,remarks,rentedBy);
+                cars.add(c);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return (Car[])cars.toArray(new Car[cars.size()]);
+
+
         Car[] cars = new Car[1];
         return cars;
     }
@@ -98,9 +146,51 @@ public class DBLinker {
     }
 
     // 返回当前用户租用的所有车辆
-    public Car[] getRentedCar() {
-        Car[] cars = new Car[1];
-        return cars;
+    public Car[] getRentedCar(int userId) {
+
+        //声明对象
+
+        //jdbc
+        //声明连接
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        ArrayList<Car>  cars= new ArrayList<>();
+        try {
+            //创建连接
+             conn = getConnection();
+
+            String sql = "select * from t_car where rentedBy = ? ";
+           ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(userId));
+
+            //发送sql获取结果集
+            resultSet = ps.executeQuery();
+            //处理结果
+
+            while(resultSet.next()){
+               int id = resultSet.getInt("id");
+                String brand = resultSet.getString("brand");
+
+                String carName = resultSet.getString("carName");
+
+                String carNo1 = resultSet.getString("carNo");
+                String type1 = resultSet.getString("type");
+                BigDecimal price = resultSet.getBigDecimal("price");
+                String status1 = resultSet.getString("status");
+                String remarks = resultSet.getString("remarks");
+                String rentedBy = resultSet.getString("rentedBy");
+                //创建对象
+                Car c=new Car(id,brand,carName,carNo1,type1,price,status1,remarks,rentedBy);
+                cars.add(c);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return (Car[])cars.toArray(new Car[cars.size()]);
     }
 
     // 根据当前用户信息修改被还车辆信息

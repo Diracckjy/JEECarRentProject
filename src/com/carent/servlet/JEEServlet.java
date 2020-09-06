@@ -46,7 +46,8 @@ public class JEEServlet extends HttpServlet {
                 req.setAttribute("errorMsg", "登陆失败，用户名或密码错误。");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             } else {
-                req.getRequestDispatcher("/returnCar.jsp").forward(req, resp);
+                req.setAttribute("userId", webUser.getId());
+                gotoReturnCar(req, resp);
             }
         }
     }
@@ -92,7 +93,8 @@ public class JEEServlet extends HttpServlet {
 
     public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException{
-        Car[] listCar= new JEEService().carReturnPageService();
+        int userId = (int)req.getAttribute("userId");
+        Car[] listCar= new JEEService().carReturnPageService(userId);
         req.setAttribute("rentedCars",listCar);
         req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
     }

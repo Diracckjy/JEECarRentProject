@@ -30,7 +30,17 @@ public class Car {
         this.rentedBy = rentedBy;
     }
 
-
+    public Car(int id, String brand, String carName, String carNo, String type, BigDecimal price, String status, String remarks, String rentedBy) {
+        this.id = id;
+        this.brand = brand;
+        this.carName = carName;
+        this.carNo = carNo;
+        this.type = type;
+        this.price = price;
+        this.status = status;
+        this.remarks = remarks;
+        this.rentedBy = rentedBy;
+    }
 
     public String getRemarks() {
         return remarks;
