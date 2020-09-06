@@ -12,9 +12,9 @@
 </head>
 <body>
     <%
-        String error = (String)request.getAttribute("error");
-        if(error != null){
-            out.println("<h3>"+error+"</h3>");
+        String errorMsg = (String)request.getAttribute("errorMsg");
+        if(errorMsg != null){
+            out.println("<h3>"+ errorMsg +"</h3>");
         }
     %>
     <form action="JEEServlet" method="post">

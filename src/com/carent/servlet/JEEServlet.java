@@ -23,9 +23,11 @@ public class JEEServlet extends HttpServlet {
         } else if ("rentCar".equals(opa)) {
             rentCar(req, resp);
         } else if("returnCar".equals(opa)){
-
-        }else if("gotoReturncar".equals(opa)){
+            returnCar(req, resp);
+        }else if("gotoReturnCar".equals(opa)){
             gotoReturnCar(req,resp);
+        }else if ("gotoRentCar".equals(opa)){
+            gotoRentCar(req, resp);
         }
     }
 
@@ -41,9 +43,10 @@ public class JEEServlet extends HttpServlet {
             adminLogin(req, resp);
         } else {//webUser是看是否数据库里面有这个用户，没有返回null
             if (webUser == null) {
+                req.setAttribute("errorMsg", "登陆失败，用户名或密码错误。");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             } else {
-                req.getRequestDispatcher("/renturnCar.jsp").forward(req, resp);
+                req.getRequestDispatcher("/returnCar.jsp").forward(req, resp);
             }
         }
     }
@@ -53,10 +56,12 @@ public class JEEServlet extends HttpServlet {
             throws IOException, ServletException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
+
         JEEService jes = new JEEService();
         jes.registerService(userName,password);
+
         if (userName == null || password == null) {
-            req.setAttribute("error", "RegisterFailed");
+            req.setAttribute("errorMsg", "注册失败，密码或用户名不能为空。");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
@@ -73,6 +78,7 @@ public class JEEServlet extends HttpServlet {
         gotoRentCar(req,resp);
 
     }
+
     public void returnCar(HttpServletRequest req, HttpServletResponse resp)
         throws IOException, ServletException{
         Integer userId = Integer.valueOf(req.getParameter("userID"));
@@ -83,6 +89,7 @@ public class JEEServlet extends HttpServlet {
         gotoReturnCar(req,resp);
 
     }
+
     public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException{
         Car[] listCar= new JEEService().carReturnPageService();

@@ -19,6 +19,8 @@ public class Car {
     private String status;
     //备注
     private String remarks;
+    // 租借用户编号
+    private String rentedBy;
 
     public String getRentedBy() {
         return rentedBy;
@@ -28,8 +30,7 @@ public class Car {
         this.rentedBy = rentedBy;
     }
 
-    // 租借用户编号
-    private String rentedBy;
+
 
     public String getRemarks() {
         return remarks;

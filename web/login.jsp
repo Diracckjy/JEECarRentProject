@@ -11,7 +11,12 @@
     <title>登录</title>
 </head>
 <body>
-<p></p>
+<%
+    String errorMsg = (String)request.getAttribute("errorMsg");
+    if(errorMsg != null){
+        out.println("<h3>"+errorMsg+"</h3>");
+    }
+%>
 <form action="JEEServlet" method="post">
     <input type="hidden" name="operation" value="login">
     <p>用户名：<input type="text" name="userName"></p>

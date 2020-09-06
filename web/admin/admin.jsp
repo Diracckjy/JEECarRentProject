@@ -19,14 +19,9 @@
     <title>管理员修改车辆页面</title>
 </head>
 <body>
+    <p><a href="../login.jsp">登出</a></p>
     <div class="allCars">
-        <form action="JEEServlet" method="post">
-            <input type="hidden" name="operation" value="addCar">
-            <p>
-                <button type="submit" name="addCar"
-                        value="addCar">添加</button>
-            </p>
-        </form>
+        <p><a href="addCar.jsp">添加车辆</a></p>
     </div>
     <div>
         <form action="JEEServlet" method="post">
@@ -61,7 +56,9 @@
                         out.println("<td>"+ car.getBrand() + "</td>");
                         out.println("<td>"+ car.getPrice() + "</td>");
                         out.println("<td>" +
-                                "<button>还车</button></td>");
+                                "<button type=\"submit\" name=\"modifyCar\" " +
+                                "value=\"" + car.getId() + "\">" +
+                                "修改车辆信息</button></td>");
                         out.println("<tr>");
                     }
                 %>

@@ -23,20 +23,22 @@
 <body>
 
 <div class="rentedCarTable">
-    <h2>可租车辆</h2>
-    <%--        跳转到还车页--%>
+
     <form action="JEEServlet" method="post">
+        <%-- 跳转到还车页--%>
         <p>
             <button type="submit"
-                    name="gotoReturnCar" value="gotoReturnCar">
+                    name="operation" value="gotoReturnCar">
                 去还车</button>
         </p>
     </form>
+
     <form action="JEEServlet" method="post">
         <!-- 提交表单时传值 -->
-        <input type="hidden" name="operation" value="rentCarPage">
+        <input type="hidden" name="operation" value="rentCar">
         <%-- 确定用户登录id --%>
-        <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
+        <input type="hidden" name="uerId"
+               value="<%out.print(request.getAttribute("userId"));%>">
         <table>
             <tr class="title">
                 <th>编号</th>
@@ -56,27 +58,22 @@
                 <td>72.0/天</td>
                 <td><a href="#">租车</a></td>
             </tr>
-
-            <!-- 提交表单时传值 -->
-            <input type="hidden" name="operation" value="rentCar">
-            <%-- 确定用户登录id --%>
-            <input type="hidden" name="uerId" value="<%request.getAttribute("userId");%>">
-<%--            <%--%>
-<%--                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");--%>
-<%--                for (Car car : rentableCars--%>
-<%--                ) {--%>
-<%--                    out.println("<tr>");--%>
-<%--                    out.println("<td>" + car.getId() + "</td>");--%>
-<%--                    out.println("<td>" + car.getCarName() + "</td>");--%>
-<%--                    out.println("<td>" + car.getRemarks() + "</td>");--%>
-<%--                    out.println("<td>" + car.getBrand() + "</td>");--%>
-<%--                    out.println("<td>" + car.getPrice() + "</td>");--%>
-<%--                    // 通过车辆id获取信息--%>
-<%--                    out.println("<td><button type=\"submit\" name=\"rent\" value="--%>
-<%--                            + car.getId() + ">租车</button></td>");--%>
-<%--                    out.println("<tr>");--%>
-<%--                }--%>
-<%--            %>--%>
+            <%
+                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
+                for (Car car : rentableCars
+                ) {
+                    out.println("<tr>");
+                    out.println("<td>" + car.getId() + "</td>");
+                    out.println("<td>" + car.getCarName() + "</td>");
+                    out.println("<td>" + car.getRemarks() + "</td>");
+                    out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getPrice() + "</td>");
+                    // 通过车辆id获取信息
+                    out.println("<td><button type=\"submit\" name=\"carId\" value="
+                            + car.getId() + ">租车</button></td>");
+                    out.println("<tr>");
+                }
+            %>
         </table>
     </form>
 </div>
