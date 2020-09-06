@@ -47,8 +47,9 @@
             <tr class="title">
                 <th>编号</th>
                 <th>名称</th>
-                <th>备注</th>
+                <th>车牌</th>
                 <th>品牌</th>
+                <th>型号</th>
                 <th>价格</th>
                 <th>操作</th>
             </tr>
@@ -69,8 +70,9 @@
                     out.println("<tr>");
                     out.println("<td>" + car.getId() + "</td>");
                     out.println("<td>" + car.getCarName() + "</td>");
-                    out.println("<td>" + car.getRemarks() + "</td>");
+                    out.println("<td>" + car.getCarNo() + "</td>");
                     out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getType() + "</td>");
                     out.println("<td>" + car.getPrice() + "</td>");
                     // 通过车辆id获取信息
                     out.println("<td><button type=\"submit\" name=\"carId\" value="
