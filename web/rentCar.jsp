@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<div">
+<div>
     <p><a href="login.jsp">退出登录</a></p>
     <h2>可租车辆</h2>
     <form action="JEEServlet" method="post">
