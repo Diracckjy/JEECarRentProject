@@ -168,7 +168,45 @@ public class DBLinker {
 
     // 根据当前用户信息修改被租车辆信息
     public void changeRentedCarInfo(int userId, int carId) {
+        //声明对象
+        //jdbc
+        //声明连接
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        ArrayList<Car>  cars= new ArrayList<>();
+        try {
+            //创建连接
+            conn = getConnection();
 
+            String sql = " update t_car set rentedBy = ? where rentedBy = 0 ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(userId));
+            //发送sql获取结果集
+            ps.executeQuery();
+            //处理结果
+
+//            while(resultSet.next()){
+//                int id = resultSet.getInt("id");
+//                String brand = resultSet.getString("brand");
+//
+//                String carName = resultSet.getString("carName");
+//
+//                String carNo1 = resultSet.getString("carNo");
+//                String type1 = resultSet.getString("type");
+//                BigDecimal price = resultSet.getBigDecimal("price");
+//                String rentedBy = resultSet.getString("rentedBy");
+//                //创建对象
+//                Car c=new Car(id,brand,carName,carNo1,type1,price,rentedBy);
+//                cars.add(c);
+//            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        //return (Car[])cars.toArray(new Car[cars.size()]);
     }
 
     // 返回当前用户租用的所有车辆
@@ -217,7 +255,7 @@ public class DBLinker {
         return (Car[])cars.toArray(new Car[cars.size()]);
     }
 
-    // 根据当前用户信息修改被还车辆信息
+    // 根据当前用户信息修改被还车辆信息        //去还车
     public void changeReturnedCarInfo() {
 
     }
