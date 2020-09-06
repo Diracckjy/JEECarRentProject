@@ -2,6 +2,7 @@ package com.carent.dao;
 
 // JDBC Java Database connectivity
 
+import com.carent.entity.Car;
 import com.carent.entity.WebUser;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
 import java.util.Properties;
+import com.carent.entity.WebUser;
 
 public class DBLinker {
     // 在登陆时查找给定用户是否存在
@@ -85,18 +87,20 @@ public class DBLinker {
     }
 
     // 从数据库查询并返回所有可租车辆
-    public void getRentableCars() {
-
+    public Car[] getRentableCars() {
+        Car[] cars = new Car[1];
+        return cars;
     }
 
     // 根据当前用户信息修改被租车辆信息
-    public void changeRentedCarInfo() {
+    public void changeRentedCarInfo(int userId, int carId) {
 
     }
 
     // 返回当前用户租用的所有车辆
-    public void getRentedCar() {
-
+    public Car[] getRentedCar() {
+        Car[] cars = new Car[1];
+        return cars;
     }
 
     // 根据当前用户信息修改被还车辆信息
