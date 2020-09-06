@@ -29,9 +29,10 @@
 <div class="div2">
     <%--        跳转到还车页--%>
     <form action="JEEServlet" method="post">
+        <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
-                    name="gotoReturnCar" value="gotoReturnCar">
+                    name="operation" value="gotoReturnCar">
                 <span class="iconfont">&#xe619;</span></button>
         </p>
     </form>
@@ -40,7 +41,7 @@
         <!-- 提交表单时传值 -->
         <input type="hidden" name="operation" value="rentCar">
         <%-- 确定用户登录id --%>
-        <input type="hidden" name="userId" value="<%request.getAttribute("userId");%>">
+        <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
         <table border="1">
             <tr class="title">
                 <th>编号</th>
