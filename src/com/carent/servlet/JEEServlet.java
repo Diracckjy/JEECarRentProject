@@ -39,7 +39,7 @@ public class JEEServlet extends HttpServlet {
         String name = req.getParameter("userName");
         String psw = req.getParameter("password");
         JEEService jes = new JEEService();
-        WebUser webUser = jes.loginService(name, psw);
+        WebUser webUser = jes.findUserService(name, psw);
 
         if (name == "admin" && psw == "admin") {
             adminLogin(req, resp);
@@ -59,15 +59,20 @@ public class JEEServlet extends HttpServlet {
             throws IOException, ServletException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-
         JEEService jes = new JEEService();
-        jes.registerService(userName,password);
 
-        if (userName == null || password == null) {
+        if(userName == null || password == null){
             req.setAttribute("errorMsg", "注册失败，密码或用户名不能为空。");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            WebUser webUser = jes.findUserService(userName);
+            if(webUser != null){
+                req.setAttribute("errorMsg", "注册失败, 用户名重复。");
+                req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            }else {
+                jes.registerService(userName,password);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            }
         }
     }
 
