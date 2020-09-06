@@ -20,18 +20,20 @@
 <head>
     <title>租车页面</title>
 </head>
+
 <body>
-
-<div class="rentedCarTable">
-
+<div">
+    <p><a href="login.jsp">退出登录</a></p>
+    <h2>可租车辆</h2>
     <form action="JEEServlet" method="post">
         <%-- 跳转到还车页--%>
-            <input type="hidden" name="uerId"
-                   value="<%out.print(request.getAttribute("userId"));%>">
+        <input type="hidden" name="uerId"
+               value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
                     name="operation" value="gotoReturnCar">
-                去还车</button>
+                去还车
+            </button>
         </p>
     </form>
 
@@ -61,20 +63,20 @@
                 <td><a href="#">租车</a></td>
             </tr>
             <%
-//                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
-//                for (Car car : rentableCars
-//                ) {
-//                    out.println("<tr>");
-//                    out.println("<td>" + car.getId() + "</td>");
-//                    out.println("<td>" + car.getCarName() + "</td>");
-//                    out.println("<td>" + car.getRemarks() + "</td>");
-//                    out.println("<td>" + car.getBrand() + "</td>");
-//                    out.println("<td>" + car.getPrice() + "</td>");
-//                    // 通过车辆id获取信息
-//                    out.println("<td><button type=\"submit\" name=\"carId\" value="
-//                            + car.getId() + ">租车</button></td>");
-//                    out.println("<tr>");
-//                }
+                Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
+                for (Car car : rentableCars
+                ) {
+                    out.println("<tr>");
+                    out.println("<td>" + car.getId() + "</td>");
+                    out.println("<td>" + car.getCarName() + "</td>");
+                    out.println("<td>" + car.getRemarks() + "</td>");
+                    out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getPrice() + "</td>");
+                    // 通过车辆id获取信息
+                    out.println("<td><button type=\"submit\" name=\"carId\" value="
+                            + car.getId() + ">租车</button></td>");
+                    out.println("<tr>");
+                }
             %>
         </table>
     </form>
