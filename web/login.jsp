@@ -9,14 +9,19 @@
 <html>
 <head>
     <title>登录</title>
+
+    <link href="css/login.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<%
+<div class="div1"><img class="img1" src="picture/rentCar.png"></div>
+<div class="div3"><%
     String errorMsg = (String)request.getAttribute("errorMsg");
     if(errorMsg != null){
         out.println("<h3>"+errorMsg+"</h3>");
     }
 %>
+</div>
+<div class="div2">
 <form action="JEEServlet" method="post">
     <input type="hidden" name="operation" value="login">
     <p>用户名：<input type="text" name="userName"></p>
