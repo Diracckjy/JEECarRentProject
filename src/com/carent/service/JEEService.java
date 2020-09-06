@@ -16,6 +16,10 @@ public class JEEService {
         return new DBLinker().findUserInfo(userName);
     }
 
+    public WebUser findUserService(int userId){
+        return new DBLinker().findUserInfo(userId);
+    }
+
     // 将用户名、密码存入数据库
     public void registerService(String userName, String password){
         new DBLinker().storeUserInfo(userName, password);

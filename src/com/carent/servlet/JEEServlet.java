@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import com.carent.entity.WebUser;
 
 public class JEEServlet extends HttpServlet {
     @Override
@@ -50,6 +50,7 @@ public class JEEServlet extends HttpServlet {
             } else {
                 int userId = webUser.getId();
                 gotoReturnCar(req, resp, userId);
+
             }
         }
     }
@@ -100,6 +101,8 @@ public class JEEServlet extends HttpServlet {
     public void gotoReturnCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
         Car[] listCar= new JEEService().carReturnPageService(userId);
+        WebUser webuser = new JEEService().findUserService(userId);
+        req.setAttribute("currentName", webuser.getUserName());
         req.setAttribute("rentedCars",listCar);
         req.setAttribute("userId", userId);
         req.getRequestDispatcher("/returnCar.jsp").forward(req,resp);
@@ -108,6 +111,8 @@ public class JEEServlet extends HttpServlet {
     public void gotoRentCar(HttpServletRequest req, HttpServletResponse resp, int userId)
             throws IOException, ServletException{
         Car[] carlist = new JEEService().carRentPageService();
+        WebUser webuser = new JEEService().findUserService(userId);
+        req.setAttribute("currentName", webuser.getUserName());
         req.setAttribute("rentableCars", carlist);
         req.setAttribute("userId", userId);
         req.getRequestDispatcher("/rentCar.jsp").forward(req, resp);
