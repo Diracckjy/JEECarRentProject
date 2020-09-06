@@ -1,9 +1,10 @@
 package com.carent.service;
 import com.carent.dao.DBLinker;
+import com.carent.entity.Car;
 import com.carent.entity.WebUser;
 
 import com.carent.entity.WebUser;
-
+import com.*;
 // 业务处理类
 public class JEEService {
     // 在数据库中查询用户数据是否存在, 不存在时返回-1
@@ -17,22 +18,22 @@ public class JEEService {
     }
 
     //  打开租车页面功能，返回可租汽车数组
-    public void carRentPageServie(){
-
+    public Car[] carRentPageService(){
+        return new DBLinker().getRentableCars();
     }
 
     // 租车功能, 根据用户数据和被租车辆数据调整数据库
-    public void carRentService(){
-
+    public void carRentService(int userId, int carId){
+        new DBLinker().changeRentedCarInfo(userId, carId);
     }
 
     // 打开还车页功能，返回当前用户已租车辆的数组
-    public void carRenturnPageService(){
-
+    public Car[] carReturnPageService(){
+        return  new DBLinker().getRentedCar();
     }
 
     // 还车功能，根据所还车辆信息修改数据库
-    public void carRenturnService(){
+    public void carReturnService(int userId, int carId){
 
     }
 
