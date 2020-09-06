@@ -192,7 +192,7 @@ public class DBLinker {
 
     // 返回数据库中所有车辆
     public Car[] getAllCar() {
-//声明对象
+        //声明对象
         //jdbc
         //声明连接
         Connection conn = null;
@@ -234,8 +234,42 @@ public class DBLinker {
     }
 
     // 返回所有用户信息
-    public void getAllUser() {
+    public WebUser [] getAllUser() {
+        //声明对象
+        //jdbc
+        //声明连接
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        ArrayList<WebUser>  webuser= new ArrayList<>();
+        try {
+            //创建连接
+            conn = getConnection();
 
+            String sql = "select * from t_webuser     ";
+            ps = conn.prepareStatement(sql);
+
+            //发送sql获取结果集
+            resultSet = ps.executeQuery();
+            //处理结果
+
+            while(resultSet.next()){
+                int id = resultSet.getInt("id");
+                String userName = resultSet.getString("userName");
+                String password = resultSet.getString("password");
+                int rentedCarNum = resultSet.getInt("rentedCarNum");
+                //创建对象
+                WebUser w=new WebUser(id,userName,password ,rentedCarNum);
+
+                webuser.add(w);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return (WebUser [])webuser.toArray(new WebUser[webuser.size()]);
     }
 
     // 返回管理员所查看用户租用的所有车辆
