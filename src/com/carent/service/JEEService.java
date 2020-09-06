@@ -46,8 +46,16 @@ public class JEEService {
     }
 
     // 管理员主页功能，返回所有车辆信息供管理员查看
-    public void adminPageService(){
+    public Car[] adminPageService(){
+        return new DBLinker().getAllCar();
+    }
 
+    public void addCar(Car car){
+        new DBLinker().addCar(car);
+    }
+
+    public void modifyCar(Car car){
+        new DBLinker().alterCar(car);
     }
 
     // 管理员查看用户信息功能，返回所有用户供管理员查看
@@ -58,6 +66,14 @@ public class JEEService {
     // 管理员查看用户租用车辆功能，返回当前选择用户所租的所有车辆
     public void adminViewUserRentsService(){
 
+    }
+
+    public Car findCarBy(int carId){
+        return new DBLinker().findCarBy(carId);
+    }
+
+    public void deleteCar(Car car){
+        new DBLinker().deleteCar(car);
     }
 
 }

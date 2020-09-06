@@ -15,7 +15,6 @@ import java.util.Properties;
 import com.carent.entity.WebUser;
 
 public class DBLinker {
-    // 在登陆时查找给定用户是否存在
 
     private Connection getConnection() throws SQLException {
         // 数据库用户名和密码以及url
@@ -37,6 +36,7 @@ public class DBLinker {
         return DriverManager.getConnection(url, user, psw);
     }
 
+    // 在登陆时查找给定用户是否存在
     public WebUser findUserInfo(String userName, String password) {
         //声明对象
         WebUser webUser = null;
@@ -68,6 +68,37 @@ public class DBLinker {
         }
 
         return webUser;
+    }
+
+    public Car findCarBy(int carId){
+        Car car = null;
+
+        try {
+            Connection conn = getConnection();
+
+            String sql = "select * from t_car where id =  ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, String.valueOf(carId));
+            //发送sql获取结果集
+            ResultSet resultSet = ps.executeQuery();
+            //处理结果
+            if (resultSet.next()) {
+                int rentedBy = resultSet.getInt("rentedBy");
+                int id = resultSet.getInt("id");
+                String brand = resultSet.getString("brand");
+                String carName = resultSet.getString("carName");
+                String carNo1 = resultSet.getString("carNo");
+                String type1 = resultSet.getString("type");
+                BigDecimal price = resultSet.getBigDecimal("price");
+
+                //创建对象
+                car = new Car(id, brand, carName, carNo1, type1, price, rentedBy);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return car;
     }
 
     // 在注册时存储用户信息
@@ -306,8 +337,6 @@ public class DBLinker {
 
     // 根据当前用户信息修改被还车辆信息        //去还车
     public void changeReturnedCarInfo(int userId, int carId) {
-
-
         //声明对象
         //jdbc
         //声明连接
@@ -393,18 +422,16 @@ public class DBLinker {
        //增加车
     public  void addCar(Car car)
     {
-
         try {
             Connection connection = getConnection();
-            String sql = "insert into t_car(id,brand,carName,carNo,type,price,rentedBy) values( ?,?,?,?,?,?,?) ";
+            String sql = "insert into t_car(id,brand,carName,carNo,type,price,rentedBy) values( default ,?,?,?,?,?,?) ";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, Integer.toString(car.getId()));
-            ps.setString(2, car.getBrand());
-            ps.setString(3, car.getCarName());
-            ps.setString(4, car.getCarNo());
-            ps.setString(5, car.getType());
-            ps.setBigDecimal(6, car.getPrice());
-            ps.setInt(7, car.getRentedBy());
+            ps.setString(1, car.getBrand());
+            ps.setString(2, car.getCarName());
+            ps.setString(3, car.getCarNo());
+            ps.setString(4, car.getType());
+            ps.setBigDecimal(5, car.getPrice());
+            ps.setInt(6, car.getRentedBy());
             ps.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -433,13 +460,12 @@ public class DBLinker {
 
 
     //修改车
-
     public void alterCar(Car car)
     {
 
         try {
             Connection connection = getConnection();
-            String sql = "update t_car  set brand=?,carName=?,carNo=?,type=?,price=?,rentedBy=?  where id= ?";
+            String sql = "update t_car set brand=?,carName=?,carNo=?,type=?,price=?,rentedBy=?  where id= ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, car.getBrand());
             ps.setString(2,car.getCarName());
@@ -447,6 +473,7 @@ public class DBLinker {
             ps.setString(4,car.getType());
             ps.setBigDecimal(5,car.getPrice());
             ps.setInt(6, car.getRentedBy());
+            ps.setInt(7, car.getId());
             ps.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -454,8 +481,6 @@ public class DBLinker {
         }
 
     }
-
-
 
     // 返回所有用户信息
     public WebUser [] getAllUser() {
@@ -495,9 +520,5 @@ public class DBLinker {
 
         return (WebUser [])webuser.toArray(new WebUser[webuser.size()]);
     }
-
-//    // 返回管理员所查看用户租用的所有车辆
-//    public void getUserRentedCar() {
-//    }
 
 }

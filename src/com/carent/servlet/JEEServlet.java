@@ -9,13 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+
 import com.carent.entity.WebUser;
 
 public class JEEServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
-        String opa = req.getParameter("operation");
+        req.setCharacterEncoding("utf-8");
+        String op = req.getParameter("operation");
+        String[] values = op.split(",");
+        String opa = values[0];
         if ("login".equals(opa)) {
             userLogin(req, resp);
         } else if ("register".equals(opa)) {
@@ -30,7 +35,39 @@ public class JEEServlet extends HttpServlet {
         }else if ("gotoRentCar".equals(opa)){
             int userId = Integer.parseInt(req.getParameter("userId"));
             gotoRentCar(req, resp, userId);
+        }else if("modifyCar".equals(opa)){
+            modifyCar(req, resp);
+        }else if("addCar".equals(opa)){
+            addCar(req, resp);
+        }else if("gotoModifyCar".equals(opa)){
+            gotoModifyCar(req, resp);
+        }else if("gotoAddCar".equals(opa)){
+            gotoAddCar(req, resp);
+        }else if("gotoAdmin".equals(opa)){
+            gotoAdmin(req, resp);
+        }else if("deleteCar".equals(opa)){
+            deleteCar(req, resp);
         }
+    }
+
+    public void deleteCar(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException {
+        resp.setContentType("text/html;charset=utf-8");
+        String op = req.getParameter("operation");
+        String[] values = op.split(",");
+        int carId = Integer.parseInt(values[1]);
+        Car car = new JEEService().findCarBy(carId);
+        new JEEService().deleteCar(car);
+        req.setAttribute("opMsg", "删除成功");
+        gotoAdmin(req, resp);
+    }
+
+    public void gotoAdmin(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException {
+
+        Car[] cars = new JEEService().adminPageService();
+        req.setAttribute("cars", cars);
+        req.getRequestDispatcher("admin.jsp").forward(req, resp);
     }
 
     // 登录成功后重定向页面到主页
@@ -38,12 +75,11 @@ public class JEEServlet extends HttpServlet {
             throws IOException, ServletException {
         String name = req.getParameter("userName");
         String psw = req.getParameter("password");
-        JEEService jes = new JEEService();
-        WebUser webUser = jes.findUserService(name, psw);
 
-        if (name == "admin" && psw == "admin") {
+        if (name.equals("admin") && psw.equals("admin")) {
             adminLogin(req, resp);
         } else {//webUser是看是否数据库里面有这个用户，没有返回null
+            WebUser webUser = new JEEService().findUserService(name, psw);
             if (webUser == null) {
                 req.setAttribute("errorMsg", "登陆失败，用户名或密码错误。");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
@@ -119,7 +155,55 @@ public class JEEServlet extends HttpServlet {
 
     public void adminLogin(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
+        gotoAdmin(req, resp);
+    }
 
-        req.getRequestDispatcher("/admin.jsp").forward(req, resp);
+    public void modifyCar(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException{
+        int id = Integer.parseInt(req.getParameter("carId"));
+        String brand = req.getParameter("brand");
+        String carName = req.getParameter("carName");
+        String carNo = req.getParameter("carNo");
+        String type = req.getParameter("type");
+        BigDecimal price = new BigDecimal(req.getParameter("price"));
+
+        int rentedBy = Integer.parseInt(req.getParameter("rentedBy"));
+
+        Car car = new Car(id,brand,carName,carNo,type,price,rentedBy);
+        new JEEService().modifyCar(car);
+        req.setAttribute("opMsg", "修改成功");
+        adminLogin(req, resp);
+    }
+
+    public void addCar(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException{
+        int id = 0;
+        String brand = req.getParameter("brand");
+        String carName = req.getParameter("carName");
+        String carNo = req.getParameter("carNo");
+        String type = req.getParameter("type");
+        BigDecimal price = new BigDecimal(req.getParameter("price"));
+        int rentedBy = 0;
+
+        Car car = new Car(id,brand,carName,carNo,type,price,rentedBy);
+        new JEEService().addCar(car);
+        req.setAttribute("opMsg", "addSuccess");
+        gotoAddCar(req, resp);
+    }
+
+    public void gotoModifyCar(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException{
+        resp.setContentType("text/html;charset=utf-8");
+        String op = req.getParameter("operation");
+        String[] values = op.split(",");
+        int carId = Integer.parseInt(values[1]);
+        Car car = new JEEService().findCarBy(carId);
+        req.setAttribute("car", car);
+        req.getRequestDispatcher("modifyCar.jsp").forward(req, resp);
+    }
+
+    public void gotoAddCar(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException{
+        req.getRequestDispatcher("addCar.jsp").forward(req, resp);
     }
 }

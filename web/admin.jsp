@@ -19,13 +19,18 @@
     <title>管理员修改车辆页面</title>
 </head>
 <body>
-    <p><a href="../login.jsp">登出</a></p>
+    <%
+        String opMsg = (String)request.getAttribute("opMsg");
+        if(opMsg != null){
+            out.println("<p>"+opMsg+"</p>");
+        }
+    %>
+    <p><a href="login.jsp">登出</a></p>
     <div class="allCars">
         <p><a href="addCar.jsp">添加车辆</a></p>
     </div>
     <div>
         <form action="JEEServlet" method="post">
-            <input type="hidden" name="operation" value="modifyCar">
             <table>
                 <tr class="title">
                     <th>编号</th>
@@ -44,7 +49,7 @@
                     <td>大众2</td>
                     <td>舒适型</td>
                     <td>72.0/天</td>
-                    <td><a href="#">租车</a></td>
+                    <td><a href="#">修改</a></td>
                 </tr>
                 <%
                     Car[] cars = (Car[]) request.getAttribute("cars");
@@ -58,8 +63,11 @@
                         out.println("<td>" + car.getType() + "</td>");
                         out.println("<td>" + car.getPrice() + "</td>");
                         // 通过车辆id获取信息
-                        out.println("<td><button type=\"submit\" name=\"carId\" value="
-                                + car.getId() + ">租车</button></td>");
+                        out.println("<td><button type=\"submit\" name=\"carId\" value=\""
+                                + "gotoModifyCar,"+ car.getId() + "\">修改车辆信息</button></td>");
+                        out.println("<td><button type=\"submit\" name=\"operation\" value=\""
+                                + "deleteCar," + car.getId() + "\">删除车辆</button></td>");
+                        out.println("</form>");
                         out.println("<tr>");
                     }
                 %>

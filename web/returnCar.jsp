@@ -69,8 +69,8 @@
 <div>
     <div class="div1">
         <img class="img1" src="picture/logo.png">
+        <p><a href="login.jsp">退出登录</a> </p>
     </div>
-
 
     <div class="div2">
         <form action="JEEServlet" method="post">

@@ -23,9 +23,12 @@
     <link href="css/rentCar.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
+
 <div class="div1">
     <img class="img1" src="picture/logo.png">
+    <p><a href="login.jsp">退出登录</a> </p>
 </div>
+
 <div class="div2">
     <%--        跳转到还车页--%>
     <form action="JEEServlet" method="post">
