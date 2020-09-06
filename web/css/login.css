@@ -44,11 +44,18 @@
 }
 .div2{
     width: 100%;
-    position:relative;
+    position:absolute;
     height: 500px;
+    top:184px;
+    left:634px;
 }
 .form1{
     position:absolute;
     top:130px;
     left:622px;
+}
+.div3{
+    position: absolute;
+    top:297px;
+    left:703px;
 }
