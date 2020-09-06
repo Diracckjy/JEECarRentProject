@@ -109,20 +109,21 @@ public class DBLinker {
             resultSet = ps.executeQuery();
             //处理结果
 
-            while(resultSet.next()&&!resultSet.getString("rentedBy").equals("0")){
+            while(resultSet.next()){
+
+                int rentedBy = resultSet.getInt("rentedBy");
                 int id = resultSet.getInt("id");
                 String brand = resultSet.getString("brand");
-
                 String carName = resultSet.getString("carName");
-
                 String carNo1 = resultSet.getString("carNo");
                 String type1 = resultSet.getString("type");
                 BigDecimal price = resultSet.getBigDecimal("price");
+                if(rentedBy == 0){
+                    //创建对象
+                    Car c=new Car(id,brand,carName,carNo1,type1,price,rentedBy);
+                    cars.add(c);
+                }
 
-                String rentedBy = resultSet.getString("rentedBy");
-                //创建对象
-                Car c=new Car(id,brand,carName,carNo1,type1,price,rentedBy);
-                cars.add(c);
             }
 
         } catch (SQLException e) {
@@ -147,12 +148,28 @@ public class DBLinker {
             //创建连接
             conn = getConnection();
 
-            String sql = " update t_car set rentedBy = ? where rentedBy = 0 ";
+            String sql = " update t_car set rentedBy = ? where id= ? ";
             ps = conn.prepareStatement(sql);
             ps.setString(1, Integer.toString(userId));
+            ps.setString(2, Integer.toString(carId));
             //发送sql获取结果集
-            ps.executeQuery();
+            ps.executeUpdate();
             //处理结果
+
+            String sql2 = "select * from t_WebUser where id = ?  ";
+            ps = conn.prepareStatement(sql2);
+            ps.setString(1, Integer.toString(userId));
+             resultSet = ps.executeQuery();
+            int rentedCarNum = resultSet.getInt("rentedCarNum");
+            String sql1 = " update t_webuser set rentedCarNum = ? where id= ? ";
+            ps = conn.prepareStatement(sql1);
+            ps.setString(1, Integer.toString(rentedCarNum+1));
+            ps.setString(2, Integer.toString(userId));
+            //发送sql获取结果集
+            ps.executeUpdate();
+            //处理结果
+
+
 
 //            while(resultSet.next()){
 //                int id = resultSet.getInt("id");
@@ -209,7 +226,7 @@ public class DBLinker {
                 String carNo1 = resultSet.getString("carNo");
                 String type1 = resultSet.getString("type");
                 BigDecimal price = resultSet.getBigDecimal("price");
-                String rentedBy = resultSet.getString("rentedBy");
+                int rentedBy = resultSet.getInt("rentedBy");
                 //创建对象
                 Car c=new Car(id,brand,carName,carNo1,type1,price,rentedBy);
                 cars.add(c);
@@ -224,11 +241,49 @@ public class DBLinker {
     }
 
     // 根据当前用户信息修改被还车辆信息        //去还车
-    public void changeReturnedCarInfo() {
+    public void changeReturnedCarInfo(int userId, int carId) {
+
+
+        //声明对象
+        //jdbc
+        //声明连接
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        ArrayList<Car> cars = new ArrayList<>();
+        try {
+            //创建连接
+            conn = getConnection();
+
+            String sql = " update t_car set rentedBy = ? where id= ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(0));
+            ps.setString(2, Integer.toString(carId));
+            //发送sql获取结果集
+            ps.executeUpdate();
+            //处理结果
+
+            String sql2 = "select * from t_WebUser where id = ?  ";
+            ps = conn.prepareStatement(sql2);
+            ps.setString(1, Integer.toString(userId));
+            resultSet = ps.executeQuery();
+            int rentedCarNum = resultSet.getInt("rentedCarNum");
+            String sql1 = " update t_webuser set rentedCarNum = ? where id= ? ";
+            ps = conn.prepareStatement(sql1);
+            ps.setString(1, Integer.toString(rentedCarNum - 1));
+            ps.setString(2, Integer.toString(userId));
+            //发送sql获取结果集
+            ps.executeUpdate();
+            //处理结果
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    // 返回数据库中所有车辆
+        // 返回数据库中所有车辆
     public Car[] getAllCar() {
         //声明对象
         //jdbc
@@ -257,7 +312,7 @@ public class DBLinker {
                 String carNo1 = resultSet.getString("carNo");
                 String type1 = resultSet.getString("type");
                 BigDecimal price = resultSet.getBigDecimal("price");
-                String rentedBy = resultSet.getString("rentedBy");
+                int rentedBy = resultSet.getInt("rentedBy");
                 //创建对象
                 Car c=new Car(id,brand,carName,carNo1,type1,price,rentedBy);
                 cars.add(c);

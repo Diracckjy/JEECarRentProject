@@ -17,17 +17,17 @@ public class Car {
     private BigDecimal price;
 
     // 租借用户编号
-    private String rentedBy;
+    private int rentedBy;
 
-    public String getRentedBy() {
+    public int getRentedBy() {
         return rentedBy;
     }
 
-    public void setRentedBy(String rentedBy) {
+    public void setRentedBy(int rentedBy) {
         this.rentedBy = rentedBy;
     }
 
-    public Car(int id, String brand, String carName, String carNo, String type, BigDecimal price, String rentedBy) {
+    public Car(int id, String brand, String carName, String carNo, String type, BigDecimal price, int rentedBy) {
         this.id = id;
         this.brand = brand;
         this.carName = carName;

@@ -26,7 +26,7 @@
     <h2>已租车辆</h2>
     <%--跳转到租车页--%>
     <form action="JEEServlet" method="post">
-        <input type="hidden" name="uerId"
+        <input type="hidden" name="userId"
                value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
@@ -40,8 +40,8 @@
         <!-- 提交表单时传值 -->
         <input type="hidden" name="operation" value="returnCar">
         <%-- 确定用户登录id --%>
-        <input type="hidden" name="uerId"
-               value="<%out.print((String)request.getAttribute("userId"));%>">
+        <input type="hidden" name="userId"
+               value="<%out.print(request.getAttribute("userId"));%>">
         <table>
             <tr class="title">
                 <th>编号</th>

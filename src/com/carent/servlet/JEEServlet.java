@@ -25,10 +25,10 @@ public class JEEServlet extends HttpServlet {
         } else if("returnCar".equals(opa)){
             returnCar(req, resp);
         }else if("gotoReturnCar".equals(opa)){
-            int userId = (int)req.getAttribute("userId");
+            int userId = Integer.parseInt(req.getParameter("userId"));
             gotoReturnCar(req,resp, userId);
         }else if ("gotoRentCar".equals(opa)){
-            int userId = (int)req.getAttribute("userId");
+            int userId = Integer.parseInt(req.getParameter("userId"));
             gotoRentCar(req, resp, userId);
         }
     }
@@ -73,8 +73,8 @@ public class JEEServlet extends HttpServlet {
 
     public void rentCar(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
-        int userId = Integer.parseInt(req.getParameter("userID"));
-        int carId = Integer.parseInt(req.getParameter("ID"));
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        int carId = Integer.parseInt(req.getParameter("carId"));
         JEEService jes = new JEEService();
         jes.carRentService(userId, carId);
 
@@ -84,8 +84,8 @@ public class JEEServlet extends HttpServlet {
 
     public void returnCar(HttpServletRequest req, HttpServletResponse resp)
         throws IOException, ServletException{
-        int userId = Integer.parseInt(req.getParameter("userID"));
-        int carId = Integer.parseInt(req.getParameter("ID"));
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        int carId = Integer.parseInt(req.getParameter("carId"));
         JEEService jes = new JEEService();
         jes.carReturnService(userId,carId);
 

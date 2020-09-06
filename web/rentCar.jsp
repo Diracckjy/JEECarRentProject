@@ -22,12 +22,12 @@
 </head>
 
 <body>
-<div">
+<div>
     <p><a href="login.jsp">退出登录</a></p>
     <h2>可租车辆</h2>
     <form action="JEEServlet" method="post">
         <%-- 跳转到还车页--%>
-        <input type="hidden" name="uerId"
+        <input type="hidden" name="userId"
                value="<%out.print(request.getAttribute("userId"));%>">
         <p>
             <button type="submit"
@@ -41,7 +41,7 @@
         <!-- 提交表单时传值 -->
         <input type="hidden" name="operation" value="rentCar">
         <%-- 确定用户登录id --%>
-        <input type="hidden" name="uerId"
+        <input type="hidden" name="userId"
                value="<%out.print(request.getAttribute("userId"));%>">
         <table>
             <tr class="title">
