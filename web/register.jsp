@@ -13,17 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-
+    <script type="text/javascript" src="js/register.js"></script>
     <!-- Custom Theme files -->
     <link href="css/login_register_style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -61,14 +51,20 @@
                     </div>
                     <div class="icon1">
                         <span class="fa fa-lock"></span>
-                        <input type="password" placeholder="Password" required=""
-                               name="password"/>
+                        <input id="password" type="password" placeholder="Password" required=""
+                               name="password" minlength=8 onkeyup="check()"/>
+                    </div>
+                    <div class="icon1">
+                        <span class="fa fa-lock"></span>
+                        <input id="confirm_password" type="password" placeholder="Confirm Password" required=""
+                               name="confirmPassword" minlength=8 onkeyup="check()"/>
+                        <span id='message'></span>
                     </div>
                     <div class="login-check">
                         <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
                     </div>
                     <div class="bottom">
-                        <button class="btn" type="submit">Register</button>
+                        <button id="submit" class="btn" type="submit" disabled>Register</button>
                     </div>
                     <div class="links">
                         <p><a href="#">Forgot Password?</a></p>
