@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>添加车辆</title>
+    <link href="css/form.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <%

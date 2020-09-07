@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>修改车辆</title>
+    <link href="css/form.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form action="JEEServlet" method="post">
