@@ -85,8 +85,7 @@ public class JEEServlet extends HttpServlet {
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             } else {
                 int userId = webUser.getId();
-                gotoReturnCar(req, resp, userId);
-
+                gotoRentCar(req, resp, userId);
             }
         }
     }

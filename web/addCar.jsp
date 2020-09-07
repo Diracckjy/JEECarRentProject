@@ -20,18 +20,35 @@
     }
 
 %>
-<form action="JEEServlet" method="post">
-    <p><button type="submit"
-               name="operation" value="gotoAdmin">返回</button></p>
-</form>
-<form action="JEEServlet" method="post">
-    <input type="hidden" name="operation" value="addCar">
-    <p>车辆品牌<input type="text" name="brand"></p>
-    <p>车辆名称<input type="text" name="carName"></p>
-    <p>车牌号<input type="text" name="carNo"></p>
-    <p>类型<input type="text" name="type"></p>
-    <p>租金<input type="text" name="price"></p>
-    <button type="submit">确认添加</button>
-</form>
+<div class="header">
+    <form action="JEEServlet" method="post">
+        <p><button type="submit"
+                   name="operation" value="gotoAdmin">返回</button></p>
+    </form>
+</div>
+
+<div class="container">
+    <form action="JEEServlet" method="post">
+        <input type="hidden" name="operation" value="addCar" required>
+
+        <label for="brand">车辆品牌</label>
+        <input id="brand" type="text" name="brand" required>
+
+        <label for="carName">车辆名称</label>
+        <input id="carName" type="text" name="carName" required>
+
+        <label for="carNo">车牌号</label>
+        <input id="carNo" type="text" name="carNo" required>
+
+        <label for="type">类型</label>
+        <input id="type" type="text" name="type" required>
+
+        <label for="price">租金</label>
+        <input id="price" type="text" name="price" required>
+
+        <input type="submit" value="确认添加">
+    </form>
+</div>
+
 </body>
 </html>

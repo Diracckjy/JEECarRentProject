@@ -30,17 +30,16 @@
         <div class="topbar-nav">
             <form style="float:left" action="JEEServlet" method="post">
                 <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
-                <p>
-                    <button type="submit"
-                            name="operation" value="gotoReturnCar">
-                        <span class="iconfont">去还车&#xe619;</span></button>
-                </p>
+                <button type="submit"
+                        name="operation" value="gotoReturnCar">
+                    <span class="iconfont">去还车&#xe619;</span></button>
+                <a href="login.jsp">退出登录</a>
             </form>
             <%--            --%>
             <div class="topbar-info">
                 <span class="iconfont">&#xe604;</span>
                 <span class="sep">|</span>
-                <a href="#"><%out.print((String)request.getAttribute("currentName"));%></a>
+                <a href="#"><%out.print((String) request.getAttribute("currentName"));%></a>
             </div>
         </div>
         <div style="width:100%;height: 50px;">
@@ -67,16 +66,6 @@
                     <h1><b href="#">操作</b></h1></th>
                 </thead>
                 <tbody>
-                <%-- 测试显示 --%>
-                <tr>
-                    <td>1</td>
-                    <td>朗逸</td>
-                    <td>自动1.6L</td>
-                    <td>大众2</td>
-                    <td>舒适型</td>
-                    <td>72.0/天</td>
-                    <td><a href="#">租车</a></td>
-                </tr>
                 <%
                     Car[] rentableCars = (Car[]) request.getAttribute("rentableCars");
                     for (Car car : rentableCars

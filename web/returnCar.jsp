@@ -31,7 +31,7 @@
             <div class="topbar-info">
                 <span class="iconfont">&#xe604;</span>
                 <span class="sep">|</span>
-                <a href="#"><%out.print((String)request.getAttribute("currentName"));%></a>
+                <a href="#"><%out.print((String) request.getAttribute("currentName"));%></a>
             </div>
         </div>
         <div style="width:100%;height: 50px;">
@@ -58,14 +58,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>朗逸</td>
-                    <td>自动1.6L</td>
-                    <td>大众2</td>
-                    <td>舒适型</td>
-                    <td>72.0/一天</td>
-                    <td><a href="#">还车</a></td>
-                </tr>
                 <%
                     Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");
                     for (Car car : rentedCars
