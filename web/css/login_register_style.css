@@ -193,8 +193,8 @@ a {
     float: left;
 }
 
-.header-left-bottom p.right {
-	text-align: right;
+.header-left-bottom p.center {
+	text-align: center;
 }
 .header-left-bottom p a {
 	font-size: 11px;

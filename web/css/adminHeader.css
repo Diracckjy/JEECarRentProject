@@ -1,0 +1,27 @@
+#adminTop{
+    width:100%;
+    height:40px;
+    line-height:30px;
+    background:#F7F7F7;
+    margin:0 auto;
+}
+
+#left{
+    float:left;
+    height: 30px;
+    margin-top: 5px;
+}
+
+#right{
+    height: 30px;
+    float: right;
+    margin-top: 5px;
+}
+
+#adminTop li{
+}
+
+#admin li{
+    cursor:none;
+    border:1px solid #f7f7f7;
+}

@@ -76,7 +76,7 @@ public class JEEServlet extends HttpServlet {
         String name = req.getParameter("userName");
         String psw = req.getParameter("password");
 
-        if (name.equals("admin") && psw.equals("admin")) {
+        if (name.equals("admin@localhost.com") && psw.equals("admin123")) {
             adminLogin(req, resp);
         } else {//webUser是看是否数据库里面有这个用户，没有返回null
             WebUser webUser = new JEEService().findUserService(name, psw);

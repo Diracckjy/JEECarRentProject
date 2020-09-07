@@ -64,7 +64,7 @@
                         <button id="submit" class="btn" type="submit" disabled>注册</button>
                     </div>
                     <div class="links">
-                        <p class="right"><a href="login.jsp">登录已有账户</a></p>
+                        <p class="center"><a href="login.jsp">登录已有账户</a></p>
                         <div class="clear"></div>
                     </div>
                 </form>

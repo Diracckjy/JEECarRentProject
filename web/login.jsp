@@ -57,7 +57,7 @@
                         <button class="btn" type="submit">登录</button>
                     </div>
                     <div class="links">
-                        <p class="right"><a href="register.jsp">注册新账号</a></p>
+                        <p class="center"><a href="register.jsp">注册新账号</a></p>
                         <div class="clear"></div>
                     </div>
                 </form>
