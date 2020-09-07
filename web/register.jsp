@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Slide Login Form Flat Responsive Widget Template :: w3layouts</title>
+    <title>二嗨租车</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
 <!-- main -->
 <div class="w3layouts-main">
     <div class="bg-layer">
-        <h1>Slide Login form</h1>
+        <h1>二嗨租车</h1>
         <div class="header-main">
             <div class="main-icon">
                 <span class="fa fa-eercast"></span>
@@ -46,29 +46,25 @@
                     <input type="hidden" name="operation" value="register">
                     <div class="icon1">
                         <span class="fa fa-user"></span>
-                        <input type="email" placeholder="Email Address" required=""
+                        <input type="email" placeholder="邮箱" required=""
                                name="userName"/>
                     </div>
                     <div class="icon1">
                         <span class="fa fa-lock"></span>
-                        <input id="password" type="password" placeholder="Password" required=""
+                        <input id="password" type="password" placeholder="密码" required=""
                                name="password" minlength=8 onkeyup="check()"/>
                     </div>
                     <div class="icon1">
                         <span class="fa fa-lock"></span>
-                        <input id="confirm_password" type="password" placeholder="Confirm Password" required=""
+                        <input id="confirm_password" type="password" placeholder="确认密码" required=""
                                name="confirmPassword" minlength=8 onkeyup="check()"/>
                         <span id='message'></span>
                     </div>
-                    <div class="login-check">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
-                    </div>
                     <div class="bottom">
-                        <button id="submit" class="btn" type="submit" disabled>Register</button>
+                        <button id="submit" class="btn" type="submit" disabled>注册</button>
                     </div>
                     <div class="links">
-                        <p><a href="#">Forgot Password?</a></p>
-                        <p class="right"><a href="login.jsp">Have Account? Login</a></p>
+                        <p class="right"><a href="login.jsp">登录已有账户</a></p>
                         <div class="clear"></div>
                     </div>
                 </form>

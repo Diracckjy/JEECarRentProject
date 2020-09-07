@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Slide Login Form Flat Responsive Widget Template :: w3layouts</title>
+    <title>二嗨租车</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
 <!-- main -->
 <div class="w3layouts-main">
     <div class="bg-layer">
-        <h1>Slide Login form</h1>
+        <h1>二嗨租车</h1>
         <div class="header-main">
             <div class="main-icon">
                 <span class="fa fa-eercast"></span>
@@ -45,23 +45,19 @@
                     <input type="hidden" name="operation" value="login">
                     <div class="icon1">
                         <span class="fa fa-user"></span>
-                        <input type="email" placeholder="Email Address" required=""
+                        <input type="email" placeholder="邮箱" required=""
                                name="userName"/>
                     </div>
                     <div class="icon1">
                         <span class="fa fa-lock"></span>
-                        <input type="password" placeholder="Password" required=""
+                        <input type="password" placeholder="密码" required=""
                                name="password" minlength=8/>
                     </div>
-                    <div class="login-check">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
-                    </div>
                     <div class="bottom">
-                        <button class="btn" type="submit">Log In</button>
+                        <button class="btn" type="submit">登录</button>
                     </div>
                     <div class="links">
-                        <p><a href="#">Forgot Password?</a></p>
-                        <p class="right"><a href="register.jsp">New User? Register</a></p>
+                        <p class="right"><a href="register.jsp">注册新账号</a></p>
                         <div class="clear"></div>
                     </div>
                 </form>
