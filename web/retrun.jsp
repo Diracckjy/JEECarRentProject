@@ -43,7 +43,7 @@
         <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
         <button type="submit"
                 name="operation" value="gotoRentCar">
-            <span class="iconfont">&#xe6e8;</span>
+            <span class="iconfont">还车&#xe6e8;</span>
         </button>
     </form>
 </div>

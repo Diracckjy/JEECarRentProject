@@ -18,14 +18,22 @@
 <div class="top-Bar">
     <div class="container clearfix">
         <div class="topbar-nav">
-            <form style="float:left" action="JEEServlet">
-                <a href="javascript:void(0);">租车</a>
-                <span class="sep">|</span>
-                <a href="javascript:void(0);">还车</a>
-                <span class="sep">|</span>
-                <a href="javascript:void(0);">退出登录</a>
-                <span class="sep">|</span>
-            </form>
+<%--            <form style="float:left" action="JEEServlet">--%>
+<%--                <a href="javascript:void(0);">租车</a>--%>
+<%--                <span class="sep">|</span>--%>
+<%--                <a href="javascript:void(0);">还车</a>--%>
+<%--                <span class="sep">|</span>--%>
+<%--                <a href="javascript:void(0);">退出登录</a>--%>
+<%--                <span class="sep">|</span>--%>
+<%--            </form>--%>
+    <form action="JEEServlet" method="post">
+        <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
+        <button type="submit"
+                name="operation" value="gotoRentCar">
+            <span class="iconfont">租车&#xe6e8;</span>
+        </button>
+        <a href="login.jsp">退出登录</a>
+    </form>
             <div class="topbar-info">
                 <span class="iconfont">&#xe604;</span>
                 <span class="sep">|</span>
@@ -35,6 +43,7 @@
         <div style="width:100%;height: 50px;">
 
         </div>
+        <form action="JEEServlet" method="post">
         <table class="container">
             <thead>
             <tr>
@@ -49,7 +58,7 @@
                 <th>
                     <h1>价格</h1></th>
                 <th>
-                    <h1><b href="#">操作</b><h1></th>
+                    <h1><b href="#">操作</b></h1></th>
             </tr>
             </thead>
             <tbody>
@@ -101,7 +110,29 @@
                 <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
+            <input type="hidden" name="operation" value="returnCar">
+            <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
+            <%
+                Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");
+                for (Car car : rentedCars
+                ) {
+                    out.println("<tr>");
+                    out.println("<td>" + car.getId() + "</td>");
+                    out.println("<td>" + car.getCarName() + "</td>");
+                    out.println("<td>" + car.getCarNo() + "</td>");
+                    out.println("<td>" + car.getBrand() + "</td>");
+                    out.println("<td>" + car.getType() + "</td>");
+                    out.println("<td>" + car.getPrice() + "</td>");
+                    // 通过车辆id获取信息
+                    out.println("<td><button type=\"submit\" name=\"carId\" value="
+                            + car.getId() + ">还车</button></td>");
+                    out.println("<tr>");
+                }
+            %>
             </tbody>
         </table>
+        </form>
+    </div>
+</div>
 </body>
 </html>
