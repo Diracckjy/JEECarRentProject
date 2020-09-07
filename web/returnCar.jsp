@@ -1,194 +1,107 @@
-<%@ page import="com.carent.entity.Car" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: ASUS
+  Date: 9/3/2020
+  Time: 7:07 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>还车页面</title>
-    <style type="text/css">
-        body,form,input{ padding:0;margin:0;border: 0;
-            background-color: rgba(105,105,101,6);
-            color:#b0b0b0;
-        }
-        table{
-            width:1500px;
-            height:50px;
-            border:2px solid #F00;
-            text-align: center;
-            margin: 0 auto;
-        }
-        .title{
-            text-align: center;
-            color:#b0b0b0;
-            size:20px;
-            font-family: 微软雅黑, serif;
-        }
-        a:hover{
-            color:#ff6700;
-        }
-        tr{height:50px;}
-        .div1{
-            width:100%;
-            height: 100px;
-            position: relative;
-        }
-        .div2{
-            position:absolute;
-            top:23px;
-            left:1387px;
-        }
-        .img1{
-            position: absolute;
-            top:24px;
-            left:627px;
-            width:233px;
-            height:70px
-        }
-        table a{
-            text-decoration: none;
-        }
-        @font-face {
-            font-family: 'iconfont';
-            src: url('picture/iconfont/icon/iconfont.eot');
-            src: url('picture/iconfont/icon/iconfont.eot?#iefix') format('embedded-opentype'),
-            url('picture/iconfont/icon/iconfont.woff2') format('woff2'),
-            url('picture/iconfont/icon/iconfont.woff') format('woff'),
-            url('picture/iconfont/icon/iconfont.ttf') format('truetype'),
-            url('picture/iconfont/icon/iconfont.svg#iconfont') format('svg');
-        }
-        .iconfont {
-            font-family: "iconfont" !important;
-            font-size: 43px;
-            font-style: normal;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-    </style>
+    <title>还车</title>
+    <link href="css/rentCar.css" rel="stylesheet" type="text/css" />
+    <link href="css/rentCar2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div>
-    <div class="div1">
-        <img class="img1" src="picture/logo.png">
-        <p><a href="login.jsp">退出登录</a> </p>
-    </div>
+<div class="top-Bar">
+    <div class="container clearfix">
+        <div class="topbar-nav">
+            <form style="float:left" action="JEEServlet">
+                <a href="javascript:void(0);">租车</a>
+                <span class="sep">|</span>
+                <a href="javascript:void(0);">还车</a>
+                <span class="sep">|</span>
+                <a href="javascript:void(0);">退出登录</a>
+                <span class="sep">|</span>
+            </form>
+            <div class="topbar-info">
+                <span class="iconfont">&#xe604;</span>
+                <span class="sep">|</span>
+                <a href="#">用户</a>
+            </div>
+        </div>
+        <div style="width:100%;height: 50px;">
 
-    <div class="div2">
-        <form action="JEEServlet" method="post">
-            <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
-            <button type="submit"
-                    name="operation" value="gotoRentCar">
-                <span class="iconfont">&#xe6e8;</span>
-            </button>
-        </form>
-    </div>
-
-    <form action="JEEServlet" method="post">
-        <table border="1">
-            <tr class="title">
-                <th>编号1</th>
-                <th>名称</th>
-                <th>备注</th>
-                <th>品牌</th>
-                <th>类型</th>
-                <th>价格</th>
-                <th>操作</th>
-            </tr>
-
+        </div>
+        <table class="container">
+            <thead>
             <tr>
-                <td>1</td>
+                <th>
+                    <h1>名称</h1></th>
+                <th>
+                    <h1>备注</h1></th>
+                <th>
+                    <h1>品牌</h1></th>
+                <th>
+                    <h1>类型</h1></th>
+                <th>
+                    <h1>价格</h1></th>
+                <th>
+                    <h1><b href="#">操作</b><h1></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
                 <td>朗逸</td>
                 <td>自动1.6L</td>
                 <td>大众2</td>
                 <td>舒适型</td>
-                <td>72.0/天</td>
+                <td>72.0/一天</td>
                 <td><a href="#">还车</a></td>
             </tr>
             <tr>
-                <td>2</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
+                <td>Twitter</td>
+                <td>7326</td>
+                <td>10437</td>
+                <td>00:51:22</td>
+                <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
             <tr>
-                <td>3</td>
-                <td>大众</td>
-                <td>自动1.5L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
+                <td>Amazon</td>
+                <td>4162</td>
+                <td>5327</td>
+                <td>00:24:34</td>
+                <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
             <tr>
-                <td>4</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
+                <td>LinkedIn</td>
+                <td>3654</td>
+                <td>2961</td>
+                <td>00:12:10</td>
+                <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
             <tr>
-                <td>5</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
+                <td>CodePen</td>
+                <td>2002</td>
+                <td>4135</td>
+                <td>00:46:19</td>
+                <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
             <tr>
-                <td>6</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
+                <td>GitHub</td>
+                <td>4623</td>
+                <td>3486</td>
+                <td>00:31:52</td>
+                <td>01:32:50</td>
                 <td><a href="#">还车</a></td>
             </tr>
-            <tr>
-                <td>7</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
-                <td><a href="#">还车</a></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>丰田</td>
-                <td>手动2L</td>
-                <td>大众2</td>
-                <td>舒适性</td>
-                <td>50/天</td>
-                <td><a href="#">还车</a></td>
-            </tr>
-
-            <!-- 提交表单时传值 -->
-            <input type="hidden" name="operation" value="returnCar">
-            <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
-            <%
-                Car[] rentedCars = (Car[]) request.getAttribute("rentedCars");
-                for (Car car : rentedCars
-                ) {
-                    out.println("<tr>");
-                    out.println("<td>" + car.getId() + "</td>");
-                    out.println("<td>" + car.getCarName() + "</td>");
-                    out.println("<td>" + car.getCarNo() + "</td>");
-                    out.println("<td>" + car.getBrand() + "</td>");
-                    out.println("<td>" + car.getType() + "</td>");
-                    out.println("<td>" + car.getPrice() + "</td>");
-                    // 通过车辆id获取信息
-                    out.println("<td><button type=\"submit\" name=\"carId\" value="
-                            + car.getId() + ">还车</button></td>");
-                    out.println("<tr>");
-                }
-            %>
+            </tbody>
         </table>
-    </form>
-</div>
 </body>
 </html>
