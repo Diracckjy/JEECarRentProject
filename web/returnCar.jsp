@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="com.carent.entity.Car" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
     <title>还车</title>
     <link href="css/rentCar.css" rel="stylesheet" type="text/css" />
     <link href="css/rentCar2.css" rel="stylesheet" type="text/css" />
+    <link href="css/footer.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="top-Bar">
@@ -134,5 +136,6 @@
         </form>
     </div>
 </div>
+<%@include file="footer.jsp"%>
 </body>
 </html>
