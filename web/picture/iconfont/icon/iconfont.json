@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "171585",
+      "name": "还车",
+      "font_class": "huanche",
+      "unicode": "e6c0",
+      "unicode_decimal": 59072
+    },
+    {
+      "icon_id": "1115465",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "2328363",
+      "name": "用户",
+      "font_class": "yonghu1",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "3187284",
+      "name": "用户",
+      "font_class": "yonghu2",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    }
+  ]
+}
