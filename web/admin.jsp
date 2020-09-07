@@ -17,21 +17,21 @@
 <html>
 <head>
     <title>管理员修改车辆页面</title>
+    <link href="css/adminPage.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/footer.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/adminHeader.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
+    <%@include file="adminHeader.jsp"%>
     <%
         String opMsg = (String)request.getAttribute("opMsg");
         if(opMsg != null){
             out.println("<p>"+opMsg+"</p>");
         }
     %>
-    <p><a href="login.jsp">登出</a></p>
-    <div class="allCars">
-        <p><a href="addCar.jsp">添加车辆</a></p>
-    </div>
     <div>
         <form action="JEEServlet" method="post">
-            <table>
+            <table id="tbl" class="table">
                 <tr class="title">
                     <th>编号</th>
                     <th>名称</th>
@@ -43,38 +43,37 @@
                 </tr>
                 <%-- 测试显示 --%>
                 <tr>
-                    <td>1</td>
-                    <td>朗逸</td>
-                    <td>自动1.6L</td>
-                    <td>大众2</td>
-                    <td>舒适型</td>
-                    <td>72.0/天</td>
-                    <td><a href="#">修改</a></td>
+                    <td class="txt">1</td>
+                    <td class="txt">朗逸</td>
+                    <td class="txt">自动1.6L</td>
+                    <td class="txt">大众2</td>
+                    <td class="txt">舒适型</td>
+                    <td class="txt">72.0/天</td>
+                    <td class="adminButton"> <a href="#">修改</a></td>
                 </tr>
                 <%
                     Car[] cars = (Car[]) request.getAttribute("cars");
                     for (Car car : cars
                     ) {
-                        out.println("<tr>");
-                        out.println("<td>" + car.getId() + "</td>");
-                        out.println("<td>" + car.getCarName() + "</td>");
+                        out.println("<tr class=\"txt\">");
+                        out.println("<td >" + car.getId() + "</td>");
+                        out.println("<td >" + car.getCarName() + "</td>");
                         out.println("<td>" + car.getCarNo() + "</td>");
-                        out.println("<td>" + car.getBrand() + "</td>");
-                        out.println("<td>" + car.getType() + "</td>");
-                        out.println("<td>" + car.getPrice() + "</td>");
+                        out.println("<td >" + car.getBrand() + "</td>");
+                        out.println("<td >" + car.getType() + "</td>");
+                        out.println("<td class=\"\">" + car.getPrice() + "</td>");
                         // 通过车辆id获取信息
-                        out.println("<td><button type=\"submit\" name=\"carId\" value=\""
+                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"carId\" value=\""
                                 + "gotoModifyCar,"+ car.getId() + "\">修改车辆信息</button></td>");
-                        out.println("<td><button type=\"submit\" name=\"operation\" value=\""
+                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"operation\" value=\""
                                 + "deleteCar," + car.getId() + "\">删除车辆</button></td>");
-                        out.println("</form>");
-                        out.println("<tr>");
+                        out.println("</tr>");
                     }
                 %>
             </table>
         </form>
     </div>
-
+    <%@include file="footer..jsp"%>
 
 </body>
 </html>
