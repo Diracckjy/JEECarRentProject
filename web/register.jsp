@@ -1,34 +1,86 @@
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
-  Date: 9/3/2020
-  Time: 7:07 PM
+  Date: 9/7/2020
+  Time: 9:24 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>注册</title>
-    <link href="css/register.css" type="text/css" rel="stylesheet"/>
+    <title>Slide Login Form Flat Responsive Widget Template :: w3layouts</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <!-- Custom Theme files -->
+    <link href="css/login_register_style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    <!-- //web font -->
+
 </head>
 <body>
-<div class="div1"><img class="img1" src="picture/rentCar.png"></div>
-  <div class="div3"> <%
-        String errorMsg = (String)request.getAttribute("errorMsg");
-        if(errorMsg != null){
-            out.println("<h3>"+ errorMsg +"</h3>");
+<div class="div3">
+    <%
+        String errorMsg = (String) request.getAttribute("errorMsg");
+        if (errorMsg != null) {
+            out.println("<h3>" + errorMsg + "</h3>");
         }
     %>
-  </div>
-<div class="div2">
-    <form class="form1" action="JEEServlet" method="post">
-        <input type="hidden" name="operation" value="register">
-        <p>用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input type="text" name="userName"></p>
-        <p>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"></p>
-        <p>确认密码：<input type="password" name="confirmPaw"></p>
-        <button type="submit" name="register">注册</button>
-        <p><a href="login.jsp">已有账户</a></p>
-    </form>
 </div>
+<!-- main -->
+<div class="w3layouts-main">
+    <div class="bg-layer">
+        <h1>Slide Login form</h1>
+        <div class="header-main">
+            <div class="main-icon">
+                <span class="fa fa-eercast"></span>
+            </div>
+            <div class="header-left-bottom">
+                <form action="JEEServlet" method="post">
+                    <input type="hidden" name="operation" value="register">
+                    <div class="icon1">
+                        <span class="fa fa-user"></span>
+                        <input type="email" placeholder="Email Address" required=""
+                               name="userName"/>
+                    </div>
+                    <div class="icon1">
+                        <span class="fa fa-lock"></span>
+                        <input type="password" placeholder="Password" required=""
+                               name="password"/>
+                    </div>
+                    <div class="login-check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
+                    </div>
+                    <div class="bottom">
+                        <button class="btn" type="submit">Register</button>
+                    </div>
+                    <div class="links">
+                        <p><a href="#">Forgot Password?</a></p>
+                        <p class="right"><a href="login.jsp">Have Account? Login</a></p>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //main -->
+
 </body>
 </html>
