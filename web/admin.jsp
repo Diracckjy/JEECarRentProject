@@ -20,6 +20,7 @@
     <link href="css/adminPage.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/footer.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/adminHeader.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/adminPage.js"></script>
 </head>
 <body>
     <%@include file="adminHeader.jsp"%>
@@ -29,7 +30,7 @@
             out.println("<p>"+opMsg+"</p>");
         }
     %>
-    <div>
+    <div class="container">
         <form action="JEEServlet" method="post">
             <table id="tbl" class="table">
                 <tr class="title">
@@ -42,15 +43,6 @@
                     <th>操作</th>
                 </tr>
                 <%-- 测试显示 --%>
-                <tr>
-                    <td class="txt">1</td>
-                    <td class="txt">朗逸</td>
-                    <td class="txt">自动1.6L</td>
-                    <td class="txt">大众2</td>
-                    <td class="txt">舒适型</td>
-                    <td class="txt">72.0/天</td>
-                    <td class="adminButton"> <a href="#">修改</a></td>
-                </tr>
                 <%
                     Car[] cars = (Car[]) request.getAttribute("cars");
                     for (Car car : cars
@@ -63,10 +55,10 @@
                         out.println("<td >" + car.getType() + "</td>");
                         out.println("<td class=\"\">" + car.getPrice() + "</td>");
                         // 通过车辆id获取信息
-                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"carId\" value=\""
-                                + "gotoModifyCar,"+ car.getId() + "\">修改车辆信息</button></td>");
-                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"operation\" value=\""
-                                + "deleteCar," + car.getId() + "\">删除车辆</button></td>");
+                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"operation\" " +
+                                "value=\"" + "gotoModifyCar,"+ car.getId() + "\">修改车辆信息</button></td>");
+                        out.println("<td class=\"adminButton\"><button type=\"submit\" name=\"operation\" " +
+                                "value=\"" + "deleteCar," + car.getId() + "\">删除车辆</button></td>");
                         out.println("</tr>");
                     }
                 %>

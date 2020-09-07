@@ -1,10 +1,24 @@
 
+html body{
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .table{
     width:980px;
     border-collapse:collapse;
     margin:0 auto;
     border:1px solid #e8e8e8;
     font-size:14px;
+}
+
+.table tr:nth-child(2n) {
+    background: lightblue;
 }
 
 .table .even{
