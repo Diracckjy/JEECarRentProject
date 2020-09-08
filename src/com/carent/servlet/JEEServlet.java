@@ -18,6 +18,7 @@ public class JEEServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("utf-8");
+
         String op = req.getParameter("operation");
         String[] values = op.split(",");
         String opa = values[0];
@@ -93,6 +94,8 @@ public class JEEServlet extends HttpServlet {
     // 注册成功后重定向到登录页
     public void userRegister(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
+        resp.setContentType("text/html;charset=utf-8");
+        req.setCharacterEncoding("utf-8");
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
         JEEService jes = new JEEService();
@@ -159,6 +162,8 @@ public class JEEServlet extends HttpServlet {
 
     public void modifyCar(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException{
+        resp.setContentType("text/html;charset=utf-8");
+        req.setCharacterEncoding("utf-8");
         int id = Integer.parseInt(req.getParameter("carId"));
         String brand = req.getParameter("brand");
         String carName = req.getParameter("carName");

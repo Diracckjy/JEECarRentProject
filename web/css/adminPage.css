@@ -1,13 +1,7 @@
-
-html body{
-    height: 100%;
+.container{
+    position: relative;
+    margin-bottom: 3px;
 }
-
-/*.container{*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    height: 100%;*/
-/*}*/
 
 .table{
     width:980px;

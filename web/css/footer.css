@@ -4,6 +4,13 @@
     font-family: Open Sans;
 }
 
+.footer_container{
+    position: relative;
+    margin-top: 2px;
+    height: 253px;
+    width: auto;
+}
+
 #footLogo {
     width: 450px;
     height: 120px;
@@ -17,9 +24,7 @@
     text-align: left;
     font: bold 16px sans-serif;
     padding: 20px 20px;
-    float: bottom;
-    position:absolute;
-    bottom:0px;
+    position: relative;
 }
 
 .footer-distributed .footer-left,

@@ -17,7 +17,7 @@
 <html>
 <head>
     <title>管理员修改车辆页面</title>
-    <link href="css/adminPage.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/adminPage.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/footer.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/adminHeader.css" rel="stylesheet" type="text/css" media="all" />
 <%--    <script type="text/javascript" src="js/adminPage.js"></script>--%>
