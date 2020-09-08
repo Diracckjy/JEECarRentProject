@@ -3,11 +3,11 @@ html body{
     height: 100%;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+/*.container{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*}*/
 
 .table{
     width:980px;
@@ -40,12 +40,5 @@ html body{
 
 .txt{
     font-size: 18px;
+}
 
-}
-.adminButton{
-
-}
-.adminButton:hover {
-}
-.adminButton:active {
-}

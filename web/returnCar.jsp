@@ -24,7 +24,7 @@
                 <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
                 <button type="submit"
                         name="operation" value="gotoRentCar">
-                    <span class="iconfont">租车&#xe6e8;</span>
+                    <span class="iconfont">去租车</span>
                 </button>
                 <a href="login.jsp">退出登录</a>
             </form>

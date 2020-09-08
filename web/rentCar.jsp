@@ -32,7 +32,7 @@
                 <input type="hidden" name="userId" value="<%out.print(request.getAttribute("userId"));%>">
                 <button type="submit"
                         name="operation" value="gotoReturnCar">
-                    <span class="iconfont">去还车&#xe619;</span></button>
+                    <span class="iconfont">去还车</span></button>
                 <a href="login.jsp">退出登录</a>
             </form>
             <%--            --%>

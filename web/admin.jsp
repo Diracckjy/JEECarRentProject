@@ -20,7 +20,7 @@
     <link href="css/adminPage.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/footer.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/adminHeader.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/adminPage.js"></script>
+<%--    <script type="text/javascript" src="js/adminPage.js"></script>--%>
 </head>
 <body>
     <%@include file="adminHeader.jsp"%>
@@ -65,7 +65,7 @@
             </table>
         </form>
     </div>
-    <%@include file="footer.jsp"%>
+   <%@include file="footer.jsp"%>
 
 </body>
 </html>
