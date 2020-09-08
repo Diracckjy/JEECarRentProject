@@ -22,7 +22,7 @@
     <title>租车</title>
     <link href="css/rentCar.css" rel="stylesheet" type="text/css"/>
     <link href="css/rentCar2.css" rel="stylesheet" type="text/css"/>
-    <link href="css/footer.css" rel="stylesheet" type="text/css">
+<%--    <link href="css/footer.css" rel="stylesheet" type="text/css">--%>
 </head>
 <body>
 <div class="top-Bar">
@@ -88,6 +88,6 @@
         </form>
     </div>
 </div>
-<%@include file="footer.jsp" %>
+<%--<%@include file="footer.jsp" %>--%>
 </body>
 </html>

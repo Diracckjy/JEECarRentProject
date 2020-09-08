@@ -18,6 +18,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.above_footer{
+    height: 1px;
+}
 
 .top-Bar{
     width:100%;
@@ -31,8 +34,8 @@
 .container{
     height:40px;
     width:1226px;
-    margin:0 auto;
-
+    position: relative;
+    margin-bottom: 3px;
 }
 .clearfix:before{
     content:'.';
